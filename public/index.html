@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/Article">
   <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
@@ -9,6 +9,25 @@
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
+  
+
+  <!-- BEGIN Pre-requisites -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+  </script>
+  <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
+  </script>
+  <!-- END Pre-requisites -->
+  <script>
+    function start() {
+      gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+          client_id: '305288185100-g7g29rdpv7hq107m3d98n95o64923lfe.apps.googleusercontent.com',
+          // Scopes to request in addition to 'profile' and 'email'
+          //scope: 'additional_scope'
+        });
+      });
+    }
+  </script>
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -22,6 +41,41 @@
     <title>React App</title>
   </head>
   <body>
+      <button id="signinButton">Sign in with Google</button>
+      <script>
+          function signInCallback(authResult) {
+            if (authResult['code']) {
+          
+              // Hide the sign-in button now that the user is authorized, for example:
+              $('#signinButton').attr('style', 'display: none');
+          
+              // Send the code to the server
+              $.ajax({
+                type: 'POST',
+                url: '	http://localhost:3000/auth/google/callback',
+                // Always include an `X-Requested-With` header in every AJAX request,
+                // to protect against CSRF attacks.
+                headers: {
+                  'X-Requested-With': 'XMLHttpRequest'
+                },
+                contentType: 'application/octet-stream; charset=utf-8',
+                success: function(result) {
+                  // Handle or verify the server response.
+                },
+                processData: false,
+                data: authResult['code']
+              });
+            } else {
+              // There was an error.
+            }
+          }
+          </script>
+      <script>
+          $('#signinButton').click(function() {
+            // signInCallback defined in step 6.
+            auth2.grantOfflineAccess().then(signInCallback);
+          });
+        </script>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
