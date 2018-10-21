@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {withRouter, Switch, Route, Redirect } from 'react-router-dom'
 import  LandingPage  from './components/Landing-Page';
+import Dashboard from './components/Dashboard';
 class App extends Component {
   render() {
     return (
@@ -25,7 +26,8 @@ class App extends Component {
         
    
           <div>
-            <Route exact path="/landingpage" component={LandingPage} />
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/dashboard"  component={Dashboard}/>
           </div>
     
       </div>

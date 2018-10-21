@@ -22,9 +22,10 @@ export default function reducer(state = initialState, action) {
             error: action.errorMessage
         });
     } else if (action.type === FETCH_USERBOOKS_SUCCESS) {
+        console.log('action.userBooks', action.userBooks);
         return Object.assign({}, state, {
             loading: false,
-            userBooks:action.userBooks
+            userBooks: action.userBooks
         });
 
     } else if (action.type === REQUEST_PROTECTED_DATA) {
