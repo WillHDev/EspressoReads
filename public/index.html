@@ -12,22 +12,9 @@
   
 
   <!-- BEGIN Pre-requisites -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
-  </script>
-  <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
-  </script>
+  
   <!-- END Pre-requisites -->
-  <script>
-    function start() {
-      gapi.load('auth2', function() {
-        auth2 = gapi.auth2.init({
-          client_id: '305288185100-g7g29rdpv7hq107m3d98n95o64923lfe.apps.googleusercontent.com',
-          // Scopes to request in addition to 'profile' and 'email'
-          //scope: 'additional_scope'
-        });
-      });
-    }
-  </script>
+  
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -38,44 +25,10 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Preset</title>
   </head>
   <body>
-      <button id="signinButton">Sign in with Google</button>
-      <script>
-          function signInCallback(authResult) {
-            if (authResult['code']) {
-          
-              // Hide the sign-in button now that the user is authorized, for example:
-              $('#signinButton').attr('style', 'display: none');
-          
-              // Send the code to the server
-              $.ajax({
-                type: 'POST',
-                url: '	http://localhost:3000/auth/google/callback',
-                // Always include an `X-Requested-With` header in every AJAX request,
-                // to protect against CSRF attacks.
-                headers: {
-                  'X-Requested-With': 'XMLHttpRequest'
-                },
-                contentType: 'application/octet-stream; charset=utf-8',
-                success: function(result) {
-                  // Handle or verify the server response.
-                },
-                processData: false,
-                data: authResult['code']
-              });
-            } else {
-              // There was an error.
-            }
-          }
-          </script>
-      <script>
-          $('#signinButton').click(function() {
-            // signInCallback defined in step 6.
-            auth2.grantOfflineAccess().then(signInCallback);
-          });
-        </script>
+      
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>

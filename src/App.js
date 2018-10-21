@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import {withRouter, Switch, Route, Redirect } from 'react-router-dom'
+import  LandingPage  from './components/Landing-Page';
 class App extends Component {
   render() {
     return (
@@ -9,7 +10,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Charles can Edit <code>src/App.js</code> and save to reload.
           </p>
           <a
             className="App-link"
@@ -21,6 +22,12 @@ class App extends Component {
             Learn React
           </a>
         </header>
+        
+   
+          <div>
+            <Route exact path="/landingpage" component={LandingPage} />
+          </div>
+    
       </div>
     );
   }

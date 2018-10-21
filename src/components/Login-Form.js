@@ -1,0 +1,80 @@
+
+import React from 'react';
+import {Field, reduxForm, focus} from 'redux-form';
+import Input from './partials/Input';
+import {login} from '../actions/Auth';
+import {required, nonEmpty} from './partials/Validators';
+const uuidv4 = require('uuid/v4');
+
+export class LoginForm extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.randomId=uuidv4();
+    this.usernameId=uuidv4();
+    this.passwordId=uuidv4();
+  }
+
+  onSubmit(values) {
+    return this.props.dispatch(login(values[this.usernameId], values[this.passwordId]));
+  }
+//this.props.handleSubmit(
+  render() {    
+    let error;
+    if (this.props.error) {
+      error = (
+        <p className="form-error" aria-live="polite">
+          {this.props.error}
+        </p>
+      );
+    }
+
+    const {handleSubmit} = this.props;
+    return (
+      <form
+        id={this.randomId}
+        className="login-form"
+        onSubmit={this.props.handleSubmit(values =>
+          this.onSubmit(values))
+        }>
+
+        {error}
+
+        <label htmlFor={this.randomId}>Username</label>
+        <Field
+          component={Input}
+          autofocus
+          type="text"
+          name={this.usernameId}
+          id={this.usernameId}
+          validate={[required, nonEmpty]}
+        />
+
+        <label htmlFor={this.randomId}>Password</label>
+        <Field
+          component={Input}
+          type="password"
+          name={this.passwordId}
+          id={this.passwordId}
+          validate={[required, nonEmpty]}
+        />
+
+        <div className='align-right'>
+          <button disabled={this.props.pristine || this.props.submitting}>
+                        Log in
+          </button>
+        </div>
+
+      </form>
+    );
+  }
+}
+//onSubmitFail: (errors, dispatch) => {
+//   dispatch(focus('login', Object.keys(errors)[0]))
+// }
+
+LoginForm = reduxForm({
+  form: 'login',
+  
+})(LoginForm);
+export default LoginForm;
