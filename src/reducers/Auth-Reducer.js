@@ -4,7 +4,7 @@ import { FETCH_PROTECTED_DATA_ERROR, REQUEST_PROTECTED_DATA,
 
 const initialState = {
     currentUser: null,
-    userBooks:null,
+    userBooks:[],
     loading: false,
     error: null
 };
@@ -34,6 +34,7 @@ export default function reducer(state = initialState, action) {
         });
 
     } else if (action.type === CHANGE_CURRENT_USER) {
+        console.log('Change current User: action.data', action);
         return Object.assign({}, state, {
             loading: false,
             error: null,

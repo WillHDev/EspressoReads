@@ -9,7 +9,7 @@ import {changeCurrentUser} from '../actions/Protected-Data';
 
 export class HeaderBar extends Component {
 
-    logOut() {
+    logOut = () => {
       localStorage.removeItem('authToken');
       this.props.dispatch(changeCurrentUser(null));
   
@@ -18,7 +18,7 @@ export class HeaderBar extends Component {
     render(){
       return (
 <div className="nav-bar">
-<button onClick={this.logout}>Logout</button>
+<button onClick={this.logOut}>Logout</button>
 </div>
       )
     }

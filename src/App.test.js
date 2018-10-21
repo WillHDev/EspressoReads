@@ -15,7 +15,7 @@ describe('<App />', () => {
   it('displays a <Route /> component when rendered', () => {
     const wrapper = shallow(<App />, {disableLifecycleMethods: true});
     const routes = wrapper.find(Route);
-    expect(routes.length).toEqual(1);
+    expect(routes.length).toEqual(2);
   });
 
 })

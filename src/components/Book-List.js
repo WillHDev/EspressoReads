@@ -10,15 +10,16 @@ export default function BookList(props) {
     return <p>Loading...</p>;
   }
 
-//   if (props.books) {
-//     if(props.userBooks.length < 1){
-//       return(
-//         <div>
-//         <p><strong>No Books Found! Why don't you create one?</strong></p>
-//         </div>
-//         )
-//     } 
-//     else{
+
+    if(props.userBooks.length < 1){
+      return(
+        <div>
+        <p><strong>No Books Found! Why don't you create one?</strong></p>
+        </div>
+        )
+    } 
+
+    else {
       return (
         <div>
           {props.userBooks.map((book, i)=> <Book key={i} book={book} dispatch={props.dispatch}/> )}
@@ -26,5 +27,5 @@ export default function BookList(props) {
       );
     }
     
-//   }
-// }
+  
+}
