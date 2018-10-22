@@ -34,8 +34,11 @@ export const fetchProtectedData = () => dispatch => {  //getting user data
     })
         .then(res => { 
             console.log('res protected', res);
-            normalizeResponseErrors(res)})
-        .then(res => res.json())
+            return normalizeResponseErrors(res);
+        })
+        .then(res => {
+            return res.json();
+        } )
         .then((userData) => {
             console.log('user data', userData);
           dispatch(fetchUserBooks());
