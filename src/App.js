@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {connect} from 'react-redux';
+import  {fetchProtectedData} from './actions/Protected-Data';
 import {withRouter, Switch, Route, Redirect } from 'react-router-dom'
 import  LandingPage  from './components/Landing-Page';
 import Dashboard from './components/Dashboard';
+import RegistrationPage from './components/Registration-Page';
+
 class App extends Component {
+
+  componentWillMount(){
+    if(localStorage.getItem('authToken')){
+       this.props.dispatch(fetchProtectedData());
+    } else {
+      return;
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -28,11 +40,21 @@ class App extends Component {
           <div>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/dashboard"  component={Dashboard}/>
+            <Route exact path="/registration" component={RegistrationPage}/>
           </div>
     
       </div>
     );
   }
 }
+//export default App;
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null,
+  //router:state.router
 
-export default App;
+});
+
+export default withRouter(connect(mapStateToProps)(App));
+
+
+

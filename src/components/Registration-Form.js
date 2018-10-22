@@ -41,7 +41,8 @@ export class RegistrationForm extends React.Component {
 
 
   render() {
-
+//<p className='form-error'>{this.props.errorMessage}</p>
+console.log('error message reg', this.props.errorMessage);
     return (
       <form
         id={this.randomId}
@@ -50,7 +51,7 @@ export class RegistrationForm extends React.Component {
           this.onSubmit(values)
         )}>
 
-        <p className='form-error'>{this.props.errorMessage}</p>
+        
 
         <label htmlFor={this.usernameId}>Email</label>
         <Field

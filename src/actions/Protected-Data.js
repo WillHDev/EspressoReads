@@ -23,6 +23,7 @@ export const requestProtectedData = () => ({
 export const fetchProtectedData = () => dispatch => {  //getting user data
 
     const authToken = localStorage.getItem('authToken');
+    //console.log('before dispatch request protected');
     dispatch(requestProtectedData());
     return fetch(`${API_BASE_URL}/api/users`, {
         method: 'GET',
@@ -31,13 +32,17 @@ export const fetchProtectedData = () => dispatch => {  //getting user data
             Authorization: `Bearer ${authToken}`
         }
     })
-        .then(res => normalizeResponseErrors(res))
+        .then(res => { 
+            console.log('res protected', res);
+            normalizeResponseErrors(res)})
         .then(res => res.json())
         .then((userData) => {
+            console.log('user data', userData);
           dispatch(fetchUserBooks());
           dispatch(changeCurrentUser(userData))
         })
         .catch(err => {
+            console.log('protected error from action',err);
             dispatch(fetchProtectedDataError(err));
         });
 };
@@ -51,7 +56,7 @@ export const fetchUserBooksSuccess = userBooks => ({
 });
 
 export const fetchUserBooks=()=>dispatch=>{
-
+console.log('fetchUserBooks hit');
     const authToken = localStorage.getItem('authToken');
     dispatch(requestProtectedData(true));
     return fetch(`${API_BASE_URL}/api/books`, {
@@ -61,9 +66,12 @@ export const fetchUserBooks=()=>dispatch=>{
             Authorization: `Bearer ${authToken}`
         }
     })
-        .then(res => normalizeResponseErrors(res))
+        .then(res => { 
+            console.log('response fetched PD', res);
+            normalizeResponseErrors(res)})
         .then(res => res.json())
         .then((userData) => {
+            console.log('user data in PD actions',userData);
           dispatch(fetchUserBooksSuccess(userData))
         })
         .catch(err => {

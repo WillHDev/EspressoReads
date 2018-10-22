@@ -29,7 +29,7 @@ export class LoginForm extends React.Component {
       );
     }
 
-    const {handleSubmit} = this.props;
+    //const {handleSubmit} = this.props;
     return (
       <form
         id={this.randomId}
