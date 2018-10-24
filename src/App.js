@@ -7,7 +7,7 @@ import {withRouter, Switch, Route, Redirect } from 'react-router-dom'
 import  LandingPage  from './components/Landing-Page';
 import Dashboard from './components/Dashboard';
 import RegistrationPage from './components/Registration-Page';
-
+import NewBookForm from './components/New-Book-Container';
 class App extends Component {
 
   componentWillMount(){
@@ -41,6 +41,7 @@ class App extends Component {
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/dashboard"  component={Dashboard}/>
             <Route exact path="/registration" component={RegistrationPage}/>
+            <Route exact path="/newbook" component={NewBookForm} />
           </div>
     
       </div>

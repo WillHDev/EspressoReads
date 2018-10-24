@@ -17,7 +17,7 @@ export default function reducer(state = initialState, action) {
         });
 
     } else if (action.type === AUTH_ERROR) {
-        console.log('auth error 1');
+        //console.log('auth error 1');
         return Object.assign({}, state, {
             loading: false,
             error: action.errorMessage
@@ -44,7 +44,7 @@ export default function reducer(state = initialState, action) {
         })
 
     } else if (action.type === FETCH_PROTECTED_DATA_ERROR) {
-        console.log('aerror protected data');
+       // console.log('aerror protected data');
         return Object.assign({}, state, {
             loading: false,
             error: action.error

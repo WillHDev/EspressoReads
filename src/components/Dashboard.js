@@ -13,7 +13,8 @@ export class Dashboard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      display: true
+      display: true,
+      searchTerm: null
     };
   }
 
@@ -21,9 +22,19 @@ export class Dashboard extends Component {
     this.props.dispatch(fetchUserBooks());
   }
 
-render(){
+filterResults(searchTerm){
+  this.setState({ filterBooks: searchTerm });
+}
 
-console.log(this.props.userBooks);
+render(){
+// let booksToDisplay =[];
+// if(this.state.searchTerm){
+
+// }
+
+//onSearch={this.filterResults(searchTerm)}
+
+//console.log(this.props.userBooks);
 if(this.props.loggedIn){
     return (
 <div className="dashboard-wrapper">
