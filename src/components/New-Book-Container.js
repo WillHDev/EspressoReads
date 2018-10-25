@@ -13,7 +13,7 @@ export default class NewBookContainer extends Component {
 
             <div className="new-book-container">
             <HeaderBar />
-            <h2>New Nuke</h2>
+            <h2>New Entry</h2>
             <NewBookFormContainer />
             
             </div>

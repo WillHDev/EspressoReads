@@ -22,7 +22,7 @@ render(){
         return ''
     }
     return (
-        <div className="new-book-form">
+        <div className="new-book-form" onSubmit={(e) => this.onSubmit(e)}>
        <a > <div className="book-image" 
                   style={
                     {background:`url(${image === '' ? './images/bird.jpg': image} )`

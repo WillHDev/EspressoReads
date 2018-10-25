@@ -6,6 +6,7 @@ import HeaderBar from './Header-Bar';
 import { FaDivide } from 'react-icons/fa';
 import $ from 'jquery';
 import ToggleButton from './partials/Toggle-Button';
+import ToggleInput from './partials/Toggle-Input';
 
 export default class NewBookSearch extends Component {
     constructor(props) {
@@ -14,7 +15,8 @@ export default class NewBookSearch extends Component {
             searchTerm: '',
             booksToDisplay: null,
             showSearchInput: false,
-            expandDescription: {}
+            expandDescription: {},
+            nuggetOne: ''
         };
     }
     
@@ -97,6 +99,15 @@ addNewBookDescriptionToggle(id){
         this.expandDescription[id] = false
      
 }
+
+// fireAction = () => {
+//     console.log("Action!");
+// }
+
+handleChange(event) {
+    this.setState({nuggetOne: event.target.value})
+   
+  }
     render(){
 
         let showBooks, showSearchInput, showToggleButton, descriptionButton;
@@ -167,6 +178,8 @@ showToggleButton = <button id="button" type="button" onClick={this.showSearchInp
       <div className="parent">
                 
                     <h2>Find a Book</h2>
+                    <ToggleInput text={["Add Description", "Add"]} method={this.fireAction} 
+                    onChange={(e) => this.handleChange(e)}/>
                     <div>
                     {showToggleButton}
                         {showSearchInput}
