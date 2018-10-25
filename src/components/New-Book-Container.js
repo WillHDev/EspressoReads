@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import NewBookForm from './New-Book-Form';
+import NewBookFormContainer from './New-Book-Form-Container';
 import HeaderBar from './Header-Bar';
 import { FaDivide } from 'react-icons/fa';
 
@@ -14,7 +14,7 @@ export default class NewBookContainer extends Component {
             <div className="new-book-container">
             <HeaderBar />
             <h2>Add a New Entry</h2>
-            <NewBookForm />
+            <NewBookFormContainer />
             
             </div>
         )

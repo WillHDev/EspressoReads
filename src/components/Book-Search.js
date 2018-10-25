@@ -5,6 +5,7 @@ import { updateNewBookState, newBookErrorMessage } from '../actions/New-Book';
 import HeaderBar from './Header-Bar';
 import { FaDivide } from 'react-icons/fa';
 import $ from 'jquery';
+import ToggleButton from './partials/Toggle-Button';
 
 export default class NewBookSearch extends Component {
     constructor(props) {
@@ -12,9 +13,11 @@ export default class NewBookSearch extends Component {
         this.state = { 
             searchTerm: '',
             booksToDisplay: null,
-            showSearchInput: false
+            showSearchInput: false,
+            expandDescription: {}
         };
     }
+    
     searchBooks(event) {
         event.preventDefault();
 
@@ -54,6 +57,7 @@ const { thumbnail } = selectedBook.volumeInfo.imageLinks;
     //console.log('SelectedBook', selectedBook);
 this.props.dispatch(updateNewBookState({
 errorMessage: '', 
+id: id,
     title: title,
     authors: authors,
     image: thumbnail,
@@ -72,23 +76,55 @@ showSearchInput = () => {
         return { showSearchInput: !showSearchInput}
     })
 }
+expandDescription = (id) => {
+    // this.setState({
+    //     expandDescription: !this.state.expandDescription[id]
+    // })
+if(!this.state.expandDescription.id){ 
+
+    return this.setState({expandDescription: {...this.state.expandDescription, id: true }});
+}
+   return this.setState({expandDescription: {...this.state.expandDescription, id: !this.state.expandDescription.id }})
+}
+
+
+addNewBookDescriptionToggle(id){
+    this.setState({ 
+        expandDescription: { ...this.state.expandDescription, 
+   id: false }
+});
+
+        this.expandDescription[id] = false
+     
+}
     render(){
 
-        let showBooks, showSearchInput, showToggleButton;
+        let showBooks, showSearchInput, showToggleButton, descriptionButton;
         if(this.state.booksToDisplay !== null){
             showBooks = this.state.booksToDisplay.map( item => {
-              
+                const { id } = item;
+
+                // this.addNewBookDescriptionToggle(id);
+             
                 const { title, authors, categories, description, infoLink,
                         previewLink } = item.volumeInfo;
                 const { thumbnail } = item.volumeInfo.imageLinks;
-                    const { id } = item;
+                   
                     console.log('ID', id);
              return (
                  <li key={id} className="book-listing" onDoubleClick={() => this.selectBook(id)}>
              <div>{title}</div>
              <div>{authors}</div>
              <div>{categories}</div>
-             <div>{description}</div>
+
+   
+
+<ToggleButton   text={["Show Description", "Hide Description"]}
+                onClick={(id) => this.expandDescription(id)}
+
+/>
+        {( this.state.expandDescription.id  )? 
+        <p>{description}</p> : '' }
              <div>
              <a href={infoLink}> {thumbnail} </a></div>
              <div><a href={previewLink}>

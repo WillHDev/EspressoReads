@@ -22,6 +22,7 @@ import {
     Url:'',
     image: '',
     loading: false,
+    nuggets:[],
     tags: [],
     podcasts: [{
       name: '',
