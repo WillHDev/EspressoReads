@@ -42,7 +42,19 @@ addNugget = () => {
 }
     render(){
 
-let nuggetInputsDisplay;
+let nuggetInputsDisplay, actionButtons;
+if(this.props.newBook.title === ''){
+  actionButtons = '';
+} else {
+  actionButtons = (
+    <div className="action-buttons">
+    <button type="button" onClick={this.addNugget}>Add Nugget</button>
+          <button type='submit' id='submit-new-entry'>Submit</button>
+          </div>
+  )
+}
+
+
 if(this.state.nuggetCount > 0){
 nuggetInputsDisplay = this.state.nuggets.map(  (nugget, i) => {
   const nuggetId = `Nugget ` + `${[i + 1]}`;
@@ -74,12 +86,10 @@ return (
           {nuggetInputsDisplay}
 
           
-          <button type="button" onClick={this.addNugget}>Add Nugget</button>
-          <button type='submit' id='submit-new-entry'>Submit</button>
+          {actionButtons}
           <NewBookForm {...this.props}/>
           <NewBookSearch dispatch={this.props.dispatch}/>
-<label htmlFor="bookTitle">Title</label>
-        <h6>{this.props.newBook.title}</h6>
+
 </form>
             </div>
         )
@@ -100,3 +110,6 @@ export default withRouter(connect(mapStateToProps)(NewBookFormContainer));
 // nuggets['nugget'+nuggetCount] = '';
 
 // this.setState({nuggetCount:nuggetCount, nuggets:nuggets});
+
+//<label htmlFor="bookTitle">Title</label>
+//<h6>{this.props.newBook.title}</h6>

@@ -8,37 +8,54 @@ import  LandingPage  from './components/Landing-Page';
 import Dashboard from './components/Dashboard';
 import RegistrationPage from './components/Registration-Page';
 import NewBookForm from './components/New-Book-Container';
+import GetStarted  from './components/Get-Started';
 class App extends Component {
 
+  constructor(props){
+    super(props);
+this.state = {
+  goToLogin: false
+}
+  }
+
+
+
   componentWillMount(){
+    this.setState({
+      godToLogin: false
+    });
+
     if(localStorage.getItem('authToken')){
        this.props.dispatch(fetchProtectedData());
     } else {
       return;
     }
   }
+
+goToLogin = () => {
+  console.log('Hit');
+  this.setState({
+    goToLogin: true
+  });
+}
+
   render() {
+
+    if (this.state.goToLogin === true) {
+      return <Redirect to="/login" />;
+    } 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+  
+  <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Charles can Edit <code>src/App.js</code> and save to reload.
+            Nucleus
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-          
-            Learn React
-          </a>
-        </header>
         
    
           <div>
-            <Route exact path="/" component={LandingPage} />
+          <Route exact path="/" component={GetStarted} />
+            <Route exact path="/login" component={LandingPage} />
             <Route exact path="/dashboard"  component={Dashboard}/>
             <Route exact path="/registration" component={RegistrationPage}/>
             <Route exact path="/newbook" component={NewBookForm} />

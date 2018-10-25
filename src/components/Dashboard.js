@@ -39,7 +39,10 @@ if(this.props.loggedIn){
     return (
 <div className="dashboard-wrapper">
 <HeaderBar />
-<h1>Welcome to Head Shuttle</h1>
+
+<h1 className="nuclei">Your Nuclei</h1>
+<br/>
+<br/>
 <Booklist loading={this.props.loading} userBooks={this.props.userBooks} dispatch={this.props.dispatch}/>
 </div>
 

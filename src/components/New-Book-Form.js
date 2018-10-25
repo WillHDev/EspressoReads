@@ -17,6 +17,10 @@ expandDescription = () => {
 }
 render(){
     const { title, image, description, id} = this.props.newBook;
+
+    if(this.props.newBook.title === ''){
+        return ''
+    }
     return (
         <div className="new-book-form">
        <a > <div className="book-image" 

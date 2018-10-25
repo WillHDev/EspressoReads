@@ -20,15 +20,19 @@ export class HeaderBar extends Component {
     render(){
       return (
 <div className="nav-bar">
-<FaSearch
-          className="search-icon"
-          //onClick={this.}
-        />
-      
-<input type="text" id="search" placeholder="Enter a serach term and 
-hit enter" /><br/>
-<button onClick={this.openForm} >New</button>
-<button onClick={this.logOut}>Logout</button>
+
+      <div className="wrapper">
+      <div className="top-bar">
+      <div className="second-bar">
+      <nav className="main-nav">
+      <a className="almanac" ><input className="almanac" type="text" id="search" placeholder="Search" /><br/></a>
+<a className="almanac" ><button  className="almanac" onClick={this.openForm} >New</button></a>
+<a className="almanac" ><button  className="almanac" onClick={this.logOut}>Logout</button></a>
+
+</nav>
+</div>
+</div>
+</div>
 </div>
       )
     }

@@ -166,7 +166,7 @@ showToggleButton = <button id="button" type="button" onClick={this.showSearchInp
             <div className="new-book-search-container">
       <div className="parent">
                 
-                    <h2>Book Finder</h2>
+                    <h2>Find a Book</h2>
                     <div>
                     {showToggleButton}
                         {showSearchInput}

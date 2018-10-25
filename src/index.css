@@ -26,3 +26,156 @@ code {
 ul {
   list-style: none;
 }
+
+.about {
+  font-size:calc(10px + 1vmin);
+}
+
+/*General Styling
+====================*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #131313;
+  color: white;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  width: 90%;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+}
+/*Nav Bar Styling
+====================*/
+
+/* .logo {
+  font-size: 3em;
+  margin-left: 25px;
+  color: white;
+} */
+
+.top-bar::after {
+  content: '';
+  display: block;
+  background: #494949;
+  height: 5px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.second-bar {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.main-nav a {
+  float: left;
+  width: 20%;
+  background: #343434;
+}
+
+.main-nav>a:first-child {
+  border-bottom-left-radius: 3px
+}
+
+.main-nav>a:last-child {
+  border-bottom-right-radius: 3px
+}
+
+nav a {
+  color: inherit;
+  display: inline-block;
+  padding: 17px 25px;
+  text-align: center;
+}
+
+a.home:hover,
+a.home:active {
+  background: #A62A2A;
+}
+
+a.videos:hover,
+a.videos:before {
+  background: #FF2400;
+}
+
+a.almanac:hover,
+a.almanac:before {
+  background: #7F00FF;
+}
+
+a.snippets:hover,
+a.snippets:before {
+  background: #002859;
+}
+
+a.forums:hover,
+a.forums:before {
+  background: #238E23;
+}
+/*Content
+====================*/
+
+.content-wrapper {
+  background: #C0D9D9;
+  width: 100%;
+  display: inline-block;
+  height: 1000px;
+  border-radius: 3px;
+}
+
+.content {
+  width: 90%;
+  padding: 15px;
+  color: #343434;
+  background: white;
+  height: auto;
+  margin: 35px auto 15px;
+  border-radius: 3px;
+}
+
+.articleName {
+  font-size: 2em;
+  margin: 0 0 15px;
+}
+
+.articleName a {
+  color: #343434;
+}
+
+.articleName a:hover {
+  color: #1822a5;
+}
+
+/* .author {
+  font-size: 1.3em;
+  color: grey;
+}
+
+.author a {
+  color: grey;
+}
+
+.author a:hover {
+  color: black; 
+}
+*/
+
+/*First child not working, but this does? Check later */
+
+.content>p:nth-child(2) {
+  text-indent: 2em;
+}
+
+.nuclei {
+  box-sizing: inline-block;
+  width: 100%;
+}
