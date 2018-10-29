@@ -44,10 +44,11 @@ export class NewBookFormContainer extends Component {
       authors: this.props.newBook.authors,
       id: this.props.newBook.id,
       Url: this.props.newBook.Url,
-      image: this.props.newBook.image,
-      nuggets: this.state.nuggets
+      image: this.props.newBook.image
     };
-    this.props.dispatch(postNewBook(newEntry));
+
+    const nuggets = this.state.nuggets;
+    this.props.dispatch(postNewBook(newEntry, nuggets));
   };
   updateFromPageState(event) {
     console.log("Index", event.currentTarget.index);

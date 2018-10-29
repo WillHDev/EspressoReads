@@ -1,48 +1,58 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
-import {changeCurrentUser} from '../actions/Protected-Data';
-import { FaSearch } from 'react-icons/fa';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { changeCurrentUser } from "../actions/Protected-Data";
+import { FaSearch } from "react-icons/fa";
 //import Button from './Button';
 
-
 export class HeaderBar extends Component {
-
-    logOut = () => {
-      localStorage.removeItem('authToken');
-      this.props.dispatch(changeCurrentUser(null));
-  
-    }
+  logOut = () => {
+    localStorage.removeItem("authToken");
+    this.props.dispatch(changeCurrentUser(null));
+  };
   openForm = () => {
-    this.props.history.push('/newbook');
+    this.props.history.push("/newbook");
+  };
+  render() {
+    console.log("token???", localStorage.getItem("authToken"));
+
+    return (
+      <div className="nav-bar">
+        <div className="wrapper">
+          <div className="top-bar">
+            <div className="second-bar">
+              <nav className="main-nav">
+                <a className="almanac">
+                  <input
+                    className="almanac"
+                    type="text"
+                    id="search"
+                    placeholder="Search"
+                  />
+                  <br />
+                </a>
+                <a className="almanac">
+                  <button className="almanac" onClick={this.openForm}>
+                    New
+                  </button>
+                </a>
+                <a className="almanac">
+                  <button className="almanac" onClick={this.logOut}>
+                    Logout
+                  </button>
+                </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
-    render(){
-      return (
-<div className="nav-bar">
-
-      <div className="wrapper">
-      <div className="top-bar">
-      <div className="second-bar">
-      <nav className="main-nav">
-      <a className="almanac" ><input className="almanac" type="text" id="search" placeholder="Search" /><br/></a>
-<a className="almanac" ><button  className="almanac" onClick={this.openForm} >New</button></a>
-<a className="almanac" ><button  className="almanac" onClick={this.logOut}>Logout</button></a>
-
-</nav>
-</div>
-</div>
-</div>
-</div>
-      )
-    }
 }
 
-
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null,
-  });
-  
-  
-  export default withRouter(connect(mapStateToProps)(HeaderBar));
-  
+  loggedIn: localStorage.getItem("authToken") !== null
+});
+
+export default withRouter(connect(mapStateToProps)(HeaderBar));

@@ -7,7 +7,7 @@ import { withRouter, Switch, Route, Redirect } from "react-router-dom";
 import LandingPage from "./components/Landing-Page";
 import Dashboard from "./components/Dashboard";
 import RegistrationPage from "./components/Registration-Page";
-import NewBookForm from "./components/New-Book-Container";
+import NewBookContainer from "./components/New-Book-Container";
 import GetStarted from "./components/Get-Started";
 class App extends Component {
   constructor(props) {
@@ -56,7 +56,7 @@ class App extends Component {
           <Route exact path="/login" component={LandingPage} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/registration" component={RegistrationPage} />
-          <Route exact path="/newbook" component={NewBookForm} />
+          <Route exact path="/newbook" component={NewBookContainer} />
         </div>
       </div>
     );

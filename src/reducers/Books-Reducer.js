@@ -10,6 +10,18 @@ import {
   DELETE_BOOK_SUCCESS
 } from "../actions/New-Book";
 
+import {
+  //   SHOW_NEW_NUGGETS_STATE,
+  //   UPDATE_NEW_NUGGETS_STATE,
+  NEW_NUGGETS_ERROR_MESSAGE,
+  POST_NEW_NUGGETS_REQUEST,
+  POST_NEW_NUGGETS_SUCCESS
+  //   RESET_NEW_NUGGETS_STATE,
+  //   DELETE_NUGGETS_REQUEST,
+  //   DELETE_NUGGETS_ERROR,
+  //   DELETE_NUGGETS_SUCCESS
+} from "../actions/Nuggets";
+
 //id?
 export const initialState = {
   errorMessage: "",
@@ -52,6 +64,14 @@ export default function newBookReducer(state = initialState, action) {
   } else if (action.type === UPDATE_NEW_BOOK_STATE) {
     return Object.assign({}, state, action.updateObject);
   } else if (action.type === POST_NEW_BOOK_SUCCESS) {
+    return Object.assign({}, state, {
+      loading: false
+    });
+  } else if (action.type === POST_NEW_NUGGETS_REQUEST) {
+    return Object.assign({}, state, {
+      loading: true
+    });
+  } else if (action.type === POST_NEW_NUGGETS_SUCCESS) {
     return Object.assign({}, state, {
       loading: false
     });

@@ -1,25 +1,25 @@
-
-import React from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
-import Input from './partials/Input';
-import {login} from '../actions/Auth';
-import {required, nonEmpty} from './partials/Validators';
-const uuidv4 = require('uuid/v4');
+import React from "react";
+import { Field, reduxForm, focus } from "redux-form";
+import Input from "./partials/Input";
+import { login } from "../actions/Auth";
+import { required, nonEmpty } from "./partials/Validators";
+const uuidv4 = require("uuid/v4");
 
 export class LoginForm extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.randomId=uuidv4();
-    this.usernameId=uuidv4();
-    this.passwordId=uuidv4();
+    this.randomId = uuidv4();
+    this.usernameId = uuidv4();
+    this.passwordId = uuidv4();
   }
 
   onSubmit(values) {
-    return this.props.dispatch(login(values[this.usernameId], values[this.passwordId]));
+    return this.props.dispatch(
+      login(values[this.usernameId], values[this.passwordId])
+    );
   }
-//this.props.handleSubmit(
-  render() {    
+  //this.props.handleSubmit(
+  render() {
     let error;
     if (this.props.error) {
       error = (
@@ -34,10 +34,8 @@ export class LoginForm extends React.Component {
       <form
         id={this.randomId}
         className="login-form"
-        onSubmit={this.props.handleSubmit(values =>
-          this.onSubmit(values))
-        }>
-
+        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+      >
         {error}
 
         <label htmlFor={this.randomId}>Username</label>
@@ -59,12 +57,11 @@ export class LoginForm extends React.Component {
           validate={[required, nonEmpty]}
         />
 
-        <div className='align-right'>
+        <div className="align-right">
           <button disabled={this.props.pristine || this.props.submitting}>
-                        Log in
+            Log in
           </button>
         </div>
-
       </form>
     );
   }
@@ -74,7 +71,6 @@ export class LoginForm extends React.Component {
 // }
 
 LoginForm = reduxForm({
-  form: 'login',
-  
+  form: "login"
 })(LoginForm);
 export default LoginForm;
