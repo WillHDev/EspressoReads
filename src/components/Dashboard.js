@@ -18,7 +18,7 @@ export class Dashboard extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchUserBooks());
+    //this.props.dispatch(fetchUserBooks());
   }
 
   filterResults(searchTerm) {

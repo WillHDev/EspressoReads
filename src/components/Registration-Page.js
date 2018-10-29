@@ -1,25 +1,21 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import RegistrationForm from './Registration-Form';
-import { Redirect } from 'react-router-dom';
-
+import React from "react";
+import { connect } from "react-redux";
+import RegistrationForm from "./Registration-Form";
+import { Redirect } from "react-router-dom";
 
 export function RegistrationPage(props) {
-//   if (props.loggedIn) {
-//     return <Redirect to="/dashboard" />;
-//   }
+  if (props.loggedIn) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
-       
     <div className="container">
       <div className="form-container">
-   
-          <h1>Join Goodtimes</h1>
-          <p>Create an account, create events, invite your friends and more!</p>
-       
-        <RegistrationForm errorMessage={props.errorMessage}/>
+        <h1>Join Goodtimes</h1>
+        <p>Create an account, create events, invite your friends and more!</p>
+
+        <RegistrationForm errorMessage={props.errorMessage} />
       </div>
     </div>
-        
   );
 }
 

@@ -19,7 +19,7 @@ class App extends Component {
 
   componentWillMount() {
     this.setState({
-      godToLogin: false
+      goToLogin: false
     });
 
     if (localStorage.getItem("authToken")) {
