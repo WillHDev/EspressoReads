@@ -41,7 +41,7 @@ export const fetchProtectedData = () => dispatch => {
     })
     .then(userData => {
       console.log("user data", userData);
-      dispatch(fetchUserBooks());
+      //dispatch(fetchUserBooks());
       dispatch(fetchSharedBooks());
       dispatch(changeCurrentUser(userData));
     })

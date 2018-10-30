@@ -40,7 +40,7 @@ class App extends Component {
   };
 
   backToDashboard = () => {
-    return <Redirect to="/dashboard" />;
+    return this.props.history.push("/dashboard");
   };
 
   render() {

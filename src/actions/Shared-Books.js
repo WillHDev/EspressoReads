@@ -2,7 +2,7 @@ import { API_BASE_URL } from "../config";
 import { normalizeResponseErrors } from "./Utils";
 
 export const fetchSharedBooks = () => dispatch => {
-  console.log("fetchBooks hit");
+  //console.log("fetchBooks hit");
   const authToken = localStorage.getItem("authToken");
   dispatch(fetchSharedBooksRequest(true));
   return fetch(`${API_BASE_URL}/api/books`, {
@@ -13,16 +13,16 @@ export const fetchSharedBooks = () => dispatch => {
     }
   })
     .then(res => {
-      console.log("response fetched PD", res);
+      //console.log("response fetched PD", res);
       return normalizeResponseErrors(res);
     })
     .then(res => res.json())
     .then(bookData => {
-      console.log("user data in PD actions", bookData);
+      //console.log("########user data in PD actions", bookData);
       return dispatch(fetchSharedBooksSuccess(bookData));
     })
     .catch(err => {
-      console.log("Error!", err);
+      //console.log("Error!", err);
       return dispatch(fetchSharedBooksError(err));
     });
 };

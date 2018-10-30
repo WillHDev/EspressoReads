@@ -26,7 +26,7 @@ export class Dashboard extends Component {
   }
 
   render() {
-    console.log("token???", localStorage.getItem("authToken"));
+    //console.log("token???", localStorage.getItem("authToken"));
     if (this.props.loggedIn) {
       return (
         <div className="dashboard-wrapper">

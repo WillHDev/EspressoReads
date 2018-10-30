@@ -1,17 +1,9 @@
 import React, { Component } from "react";
-
 import NewBookForm from "./New-Book-Form";
 import NewBookSearch from "./Book-Search";
-import HeaderBar from "./Header-Bar";
-import {
-  updateNewBookState,
-  newBookErrorMessage,
-  postNewBook
-} from "../actions/New-Book";
+import { postNewBook } from "../actions/New-Book";
 import { connect } from "react-redux";
-import { Link, Redirect, withRouter } from "react-router-dom";
-import { Nugget } from "./Nugget";
-import ToggleButton from "./partials/Toggle-Button";
+import { withRouter } from "react-router-dom";
 import ToggleInput from "./partials/Toggle-Input";
 
 export class NewBookFormContainer extends Component {
@@ -22,19 +14,6 @@ export class NewBookFormContainer extends Component {
       nuggetCount: 0
     };
   }
-
-  //nuggets=[
-  //nugget1: {
-  //   fromPage: 75,
-  //   toPage: 90,
-  //   description: 'Awesome'
-  //},
-  // nugget2: {
-  //   fromPage: 75,
-  //   toPage: 90,
-  //   description: 'Great'
-  //]
-  // }
   submitNewEntry = () => {
     const newEntry = {
       userId: this.props.currentUser.id,
@@ -46,24 +25,16 @@ export class NewBookFormContainer extends Component {
       Url: this.props.newBook.Url,
       image: this.props.newBook.image
     };
-    console.log("USERID@@@", newEntry.userId);
+
     const nuggetsObject = {};
     nuggetsObject.nuggets = this.state.nuggets;
     this.props.dispatch(postNewBook(newEntry, nuggetsObject));
   };
   updateFromPageState(event) {
-    console.log("Index", event.currentTarget.index);
-    console.log("Event", event.target.value);
     const nuggetId = event.target.id;
     const inputValue = event.target.value;
-
     const index = event.target.name;
-    console.log("Index", index, nuggetId);
     let updateNugget = {};
-
-    // updateNugget.fromPage = _fromPage;
-
-    //nuggets[nuggetId].fromPage = fromPage;
     const nuggets = [...this.state.nuggets];
     nuggets[index].fromPage = inputValue;
     this.setState({
@@ -71,18 +42,10 @@ export class NewBookFormContainer extends Component {
     });
   }
   updateToPageState(event) {
-    console.log("Index", event.currentTarget.index);
-    console.log("Event", event.target.value);
     const nuggetId = event.target.id;
     const inputValue = event.target.value;
-
     const index = event.target.name;
-    console.log("Index", index, nuggetId);
     let updateNugget = {};
-
-    // updateNugget.fromPage = _fromPage;
-
-    //nuggets[nuggetId].fromPage = fromPage;
     const nuggets = [...this.state.nuggets];
     nuggets[index].toPage = inputValue;
     this.setState({
@@ -91,18 +54,10 @@ export class NewBookFormContainer extends Component {
   }
 
   updateDescriptionState(event) {
-    console.log("Index", event.currentTarget.index);
-    console.log("Event", event.target.value);
     const nuggetId = event.target.id;
     const inputValue = event.target.value;
-
     const index = event.target.name;
-    console.log("Index Description", index, nuggetId);
     let updateNugget = {};
-
-    // updateNugget.fromPage = _fromPage;
-
-    //nuggets[nuggetId].fromPage = fromPage;
     const nuggets = [...this.state.nuggets];
     nuggets[index].description = inputValue;
     this.setState({
@@ -151,8 +106,6 @@ export class NewBookFormContainer extends Component {
         </div>
       );
     }
-    // index={[i]}
-    //<span>from</span>
 
     if (this.state.nuggetCount > 0) {
       nuggetInputsDisplay = this.state.nuggets.map((nugget, i) => {
@@ -191,15 +144,6 @@ export class NewBookFormContainer extends Component {
           </div>
         );
       });
-    }
-
-    {
-      /* <form
-id="bookform"
-name="bookform"
-className="book-form"
-onSubmit={e => this.handleSubmit(e)}
-> */
     }
     return (
       <div className="new-book-form-container">
