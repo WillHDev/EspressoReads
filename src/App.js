@@ -9,6 +9,8 @@ import Dashboard from "./components/Dashboard";
 import RegistrationPage from "./components/Registration-Page";
 import NewBookContainer from "./components/New-Book-Container";
 import GetStarted from "./components/Get-Started";
+import { fetchSharedBooks } from "./actions/Shared-Books";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +25,7 @@ class App extends Component {
     });
 
     if (localStorage.getItem("authToken")) {
+      this.props.dispatch(fetchSharedBooks());
       this.props.dispatch(fetchProtectedData());
     } else {
       return;

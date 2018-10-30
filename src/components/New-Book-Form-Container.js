@@ -37,7 +37,7 @@ export class NewBookFormContainer extends Component {
   // }
   submitNewEntry = () => {
     const newEntry = {
-      userId: this.props.currentUser,
+      userId: this.props.currentUser.id,
       title: this.props.newBook.title,
       subtitle: this.props.newBook.subtitle,
       description: this.props.newBook.description,
@@ -46,9 +46,10 @@ export class NewBookFormContainer extends Component {
       Url: this.props.newBook.Url,
       image: this.props.newBook.image
     };
-
-    const nuggets = this.state.nuggets;
-    this.props.dispatch(postNewBook(newEntry, nuggets));
+    console.log("USERID@@@", newEntry.userId);
+    const nuggetsObject = {};
+    nuggetsObject.nuggets = this.state.nuggets;
+    this.props.dispatch(postNewBook(newEntry, nuggetsObject));
   };
   updateFromPageState(event) {
     console.log("Index", event.currentTarget.index);

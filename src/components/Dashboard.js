@@ -26,15 +26,6 @@ export class Dashboard extends Component {
   }
 
   render() {
-    // let booksToDisplay =[];
-    // if(this.state.searchTerm){
-
-    // }
-
-    //onSearch={this.filterResults(searchTerm)}
-
-    //console.log(this.props.userBooks);
-
     console.log("token???", localStorage.getItem("authToken"));
     if (this.props.loggedIn) {
       return (
@@ -46,7 +37,7 @@ export class Dashboard extends Component {
           <br />
           <Booklist
             loading={this.props.loading}
-            userBooks={this.props.userBooks}
+            sharedBooks={this.props.sharedBooks}
             dispatch={this.props.dispatch}
           />
         </div>
@@ -61,7 +52,8 @@ export const mapStateToProps = state => ({
   loggedIn: localStorage.getItem("authToken") !== null,
   currentUser: state.auth.currentUser,
   userBooks: state.auth.userBooks,
-  loading: state.auth.loading
+  loading: state.auth.loading,
+  sharedBooks: state.sharedBooks.sharedBooks
 });
 
 export default withRouter(connect(mapStateToProps)(Dashboard));

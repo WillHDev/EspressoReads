@@ -36,18 +36,23 @@ export const postNewBookSuccess = () => ({
 });
 
 export const postNewBook = (bookData, nuggets) => dispatch => {
-  new Promise((resolve, nuggets) => resolve(postNewNuggets(nuggets)))
+  console.log("dispatch", dispatch);
+  dispatch(postNewNuggets(nuggets))
     .then(nuggetIds => {
       dispatch(postNewBookRequest());
-
+      console.log("Big time", bookData, nuggetIds);
       const token = localStorage.getItem("authToken");
+      console.log("token token token", token);
+      const bodyObj = {};
+      bodyObj.nuggetIds = nuggetIds;
+      bodyObj.bookData = bookData;
       return fetch(`${API_BASE_URL}/api/books`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(bookData, nuggetIds)
+        body: JSON.stringify(bodyObj)
       });
     })
     //postNewNuggets(nuggets);
