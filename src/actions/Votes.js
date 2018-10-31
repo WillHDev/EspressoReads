@@ -1,9 +1,7 @@
 import { API_BASE_URL } from "../config";
 import { normalizeResponseErrors } from "./Utils";
-
+import { fetchSharedBooks } from "./Shared-Books";
 export const changeVote = (bookId, voteAction) => dispatch => {
-  console.log("increment hit");
-  console.log("voteAction", voteAction);
   const authToken = localStorage.getItem("authToken");
   dispatch(changeVoteRequest(true));
   return fetch(`${API_BASE_URL}/api/books/${bookId}`, {
@@ -16,13 +14,14 @@ export const changeVote = (bookId, voteAction) => dispatch => {
     body: JSON.stringify(voteAction)
   })
     .then(res => {
-      console.log("response upvote", res);
       return normalizeResponseErrors(res);
     })
     .then(res => res.json())
     .then(bookData => {
-      console.log("########user data in PD actions", bookData);
       return dispatch(changeVoteSuccess(bookData));
+    })
+    .then(() => {
+      dispatch(fetchSharedBooks());
     })
     .catch(err => {
       console.log("Error!", err);

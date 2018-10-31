@@ -16,9 +16,16 @@ export default function BookList(props) {
       </div>
     );
   } else {
+    //order by vote count
+    const orderedBooks = props.sharedBooks.sort(function(a, b) {
+      return a.votes - b.votes;
+    });
+    orderedBooks.map(book => {
+      return console.log("Vote", book.votes);
+    });
     return (
       <div>
-        {props.sharedBooks.map((book, i) => (
+        {orderedBooks.map((book, i) => (
           <Book key={i} book={book} dispatch={props.dispatch} />
         ))}
       </div>

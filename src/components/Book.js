@@ -1,12 +1,13 @@
 import React from "react";
 import ToggleInfo from "./partials/Toggle-Info";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
-//import {  } from "react-icons/fa";
 import { changeVote } from "../actions/Votes";
-
-export default class Book extends React.Component {
+import { connect } from "react-redux";
+import { loadBookIntoSingleView } from "../actions/View-Book";
+import { Redirect, withRouter } from "react-router-dom";
+export class Book extends React.Component {
   upVote = event => {
-    this.refs.btn.setAttribute("disabled", "disabled");
+    //this.refs.btn.setAttribute("disabled", "disabled");
     const bookId = event.currentTarget.id;
     const voteAction = {};
     voteAction.voteAction = "up";
@@ -17,8 +18,19 @@ export default class Book extends React.Component {
     const bookId = event.currentTarget.id;
     const voteAction = {};
     voteAction.voteAction = "down";
-    console.log("ID from method", bookId, Object.keys(event.target));
+
     this.props.dispatch(changeVote(bookId, voteAction));
+  };
+  openBook = event => {
+    const bookId = event.currentTarget.id;
+    //console.log("bookId!!!!", bookId);
+    // const address = `/viewbook/`;
+    //console.log("Address", address);
+    const { book } = this.props;
+    console.log("book sent from openBook", book);
+    this.props.dispatch(loadBookIntoSingleView(book));
+    // return <Redirect to="/viewbook" />;
+    this.props.history.push("/viewbook");
   };
   render() {
     let nuggetsDisplay;
@@ -34,12 +46,19 @@ export default class Book extends React.Component {
       });
     }
     let toggleInfo;
+    const {
+      title,
+      author,
+      subtitle,
+      id,
+      image,
+      votes,
+      description
+    } = this.props.book;
     if (this.props.description !== "") {
-      toggleInfo = <ToggleInfo info={this.props.description} />;
+      toggleInfo = <ToggleInfo info={description} />;
     }
 
-    //console.log("PROPS.id", this.props.book.id);
-    const { title, author, subtitle, id, image, votes } = this.props.book;
     return (
       <div className="book">
         <h4>{title}</h4>
@@ -54,9 +73,20 @@ export default class Book extends React.Component {
         </span>
         {toggleInfo}
 
-        <img className="book-image" src={image} />
+        <img
+          className="book-image"
+          src={image}
+          onClick={e => this.openBook(e)}
+          id={id}
+        />
         <ul>{nuggetsDisplay}</ul>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
+
+export default withRouter(connect(mapStateToProps)(Book));

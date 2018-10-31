@@ -8,6 +8,7 @@ import LandingPage from "./components/Landing-Page";
 import Dashboard from "./components/Dashboard";
 import RegistrationPage from "./components/Registration-Page";
 import NewBookContainer from "./components/New-Book-Container";
+import BookPage from "./components/Book-Page";
 import GetStarted from "./components/Get-Started";
 import { fetchSharedBooks } from "./actions/Shared-Books";
 
@@ -60,6 +61,7 @@ class App extends Component {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/registration" component={RegistrationPage} />
           <Route exact path="/newbook" component={NewBookContainer} />
+          <Route exact path="/viewbook" component={BookPage} />
         </div>
       </div>
     );
