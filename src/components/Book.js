@@ -1,10 +1,14 @@
 import React from "react";
 import ToggleInfo from "./partials/Toggle-Info";
+import Toggle from "./partials/Toggle";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { FaArrowCircleDown, FaArrowCircleUp } from "react-icons/fa";
 import { changeVote } from "../actions/Votes";
 import { connect } from "react-redux";
 import { loadBookIntoSingleView } from "../actions/View-Book";
 import { Redirect, withRouter } from "react-router-dom";
+import Comments from "./Comments";
+
 export class Book extends React.Component {
   upVote = event => {
     //this.refs.btn.setAttribute("disabled", "disabled");
@@ -80,6 +84,20 @@ export class Book extends React.Component {
           id={id}
         />
         <ul>{nuggetsDisplay}</ul>
+        <Toggle>
+          {({ on, toggle }) => (
+            <div>
+              {!on && <button onClick={toggle}>Comments</button>}
+              {on && (
+                <div>
+                  <FaArrowCircleUp onClick={toggle} />
+
+                  <Comments book={this.props.book} />
+                </div>
+              )}
+            </div>
+          )}
+        </Toggle>
       </div>
     );
   }
