@@ -53,6 +53,7 @@ export class Comment extends React.Component {
       <div>
         <span>{comment.author}</span>
         <p>{comment.text}</p>
+        <h1>Comments22</h1>
         <button onClick={this.addComment}>Add Comment</button>
         {commentInputDisplay}
       </div>

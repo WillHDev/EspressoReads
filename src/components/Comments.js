@@ -1,9 +1,37 @@
 import React from "react";
 import { FaDivide } from "react-icons/fa";
 import Comment from "./Comment";
+import { addComment } from "../actions/Comment";
+import { connect } from "react-redux";
 
-export default class Comments extends React.Component {
+export class Comments extends React.Component {
+  state = {
+    comment: ""
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const comment = this.state.comment;
+    //userID, book, comment location
+    const { book } = this.props;
+    const userId = this.props.currentUser.id;
+    const commentData = {};
+    Object.assign(commentData, {
+      book,
+      userId,
+      comment
+    });
+    this.props.dispatch(addComment(commentData));
+  };
+
+  updateCommentState = event => {
+    //console.log("target", event.target);
+    this.setState({ comment: event.target.value });
+    //console.log(this.state.comment);
+  };
+
   render() {
+    console.log("state", this.state.comment);
     let commentsDisplay;
     if (this.props.comments) {
       commentsDisplay = this.props.comments.map(comment => {
@@ -12,15 +40,22 @@ export default class Comments extends React.Component {
     }
     return (
       <div>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            placeholder="add a comment"
+            value={this.state.comment}
+            onChange={e => this.updateCommentState(e)}
+            type="text"
+          />
+          <input type="submit" value="Submit" />
+        </form>
         <ul>{commentsDisplay} </ul>
       </div>
     );
   }
 }
+const mapStateToProps = state => ({
+  currentUser: state.auth.currentUser
+});
 
-// return (
-//     <div>
-//         <span>{</span>
-//         <p></p>
-//     </div>
-// )
+export default connect(mapStateToProps)(Comments);

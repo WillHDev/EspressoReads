@@ -3,10 +3,15 @@ import { normalizeResponseErrors } from "./Utils";
 import { fetchSharedBooks } from "./Shared-Books";
 
 export const addComment = commentData => dispatch => {
-  const { bookId } = commentData.book.id;
+  console.log("commentData", commentData);
+
+  const bookId = commentData.book.id;
+  console.log("bookId", bookId);
+
   const authToken = localStorage.getItem("authToken");
   dispatch(addCommentRequest(true));
-  return fetch(`${API_BASE_URL}/api/comments/${bookId}`, {
+  ///${bookId}
+  return fetch(`${API_BASE_URL}/api/comments`, {
     method: "POST",
     headers: {
       // Provide our auth token as credentials
@@ -20,7 +25,8 @@ export const addComment = commentData => dispatch => {
     })
     .then(res => res.json())
     .then(createdComment => {
-      return dispatch(addCommentToBook(createdComment));
+      console.log("createdComment", createdComment);
+      return dispatch(addCommentToBook(createdComment, bookId));
     })
 
     .catch(err => {
@@ -29,8 +35,7 @@ export const addComment = commentData => dispatch => {
     });
 };
 
-export const addCommentToBook = createdComment => dispatch => {
-  const { bookId } = commentData.book.id;
+export const addCommentToBook = (createdComment, bookId) => dispatch => {
   const authToken = localStorage.getItem("authToken");
   dispatch(addCommentToBookRequest(true));
   return fetch(`${API_BASE_URL}/api/books/${bookId}`, {
