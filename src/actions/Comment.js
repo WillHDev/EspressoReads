@@ -46,11 +46,14 @@ export const addCommentToBook = (createdComment, bookId) => dispatch => {
       return normalizeResponseErrors(res);
     })
     .then(res => res.json())
-    .then(() => {
+    .then(book => {
+      console.log("book from comment action", book);
+
       //updatedBookData
       return dispatch(addCommentToBookSuccess());
     })
     .then(() => {
+      //dispatch(updateSingleView())
       dispatch(fetchSharedBooks());
     })
     .catch(err => {

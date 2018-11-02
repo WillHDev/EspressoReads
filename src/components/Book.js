@@ -26,9 +26,6 @@ export class Book extends React.Component {
 
   render() {
     const { book } = this.props;
-    console.log("book", book);
-    // console.log("this.props", this.props);
-    // console.log("book", book);
     const {
       title,
       author,
@@ -39,7 +36,7 @@ export class Book extends React.Component {
       description,
       nuggets
     } = this.props.book;
-    console.log("image", image);
+
     let nuggetsDisplay, toggleInfo;
     if (this.props.book.nuggets) {
       nuggetsDisplay = <Nuggets nuggets={nuggets} />;

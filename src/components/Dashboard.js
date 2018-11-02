@@ -35,30 +35,29 @@ export class Dashboard extends Component {
     } else if (!this.props.sharedBooks) {
       return <h2> Loading...</h2>;
     } else {
-      if (this.props.viewBook.id !== "") {
-        display = <BookPage book={this.state.singleBook} />;
-      } else {
-        display = (
-          <Booklist
-            loading={this.props.loading}
-            sharedBooks={this.props.sharedBooks}
-            dispatch={this.props.dispatch}
-          />
-        );
-      }
-
-      return (
-        <div className="dashboard-wrapper">
-          <HeaderBar />
-
-          <h1 className="nuclei">Your Nuclei</h1>
-          <br />
-          <br />
-
-          {display}
-        </div>
+      // if (this.props.viewBook.id !== "") {
+      //   display = <BookPage book={this.state.singleBook} />;
+      // } else {
+      display = (
+        <Booklist
+          loading={this.props.loading}
+          sharedBooks={this.props.sharedBooks}
+          dispatch={this.props.dispatch}
+        />
       );
     }
+
+    return (
+      <div className="dashboard-wrapper">
+        <HeaderBar />
+
+        <h1 className="nuclei">Your Nuclei</h1>
+        <br />
+        <br />
+
+        {display}
+      </div>
+    );
   }
 }
 

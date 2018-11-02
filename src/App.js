@@ -61,7 +61,7 @@ class App extends Component {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/registration" component={RegistrationPage} />
           <Route exact path="/newbook" component={NewBookContainer} />
-          <Route exact path="/viewbook" component={BookPage} />
+          <Route path="/book/:id" component={BookPage} />
         </div>
       </div>
     );

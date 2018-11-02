@@ -89,7 +89,7 @@ export const deleteBook = bookId => dispatch => {
   dispatch(deleteBookRequest());
   const token = localStorage.getItem("authToken");
   return (
-    fetch(`${API_BASE_URL}/api/BOOKs/${bookId}`, {
+    fetch(`${API_BASE_URL}/api/books/${bookId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

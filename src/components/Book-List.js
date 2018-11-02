@@ -10,8 +10,9 @@ export class BookList extends React.Component {
     // const book = event.target;
     console.log("book", book);
 
-    this.props.dispatch(loadBookIntoSingleView(book));
-    this.props.history.push("/viewbook");
+    //this.props.dispatch(loadBookIntoSingleView(book));
+    //this.props.history.push("/viewbook");
+    this.props.history.push(`/book/${book.id}`);
   };
   render() {
     if (this.props.loading) {
