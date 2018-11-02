@@ -30,7 +30,6 @@ export default function sharedBooksReducer(state = initialState, action) {
       sharedBooks: action.books
     });
   } else if (action.type === FETCH_SHARED_BOOKS_ERROR) {
-    console.log("action.userBooks", action.userBooks);
     return Object.assign({}, state, {
       loading: false,
       error: action.error

@@ -31,10 +31,13 @@ export class Comments extends React.Component {
   };
 
   render() {
-    console.log("state", this.state.comment);
+    console.log("book from comments!!!!!", this.props.book);
+    const userId = this.props.currentUser.id;
+    //console.log("state", this.state.comment);
     let commentsDisplay;
-    if (this.props.comments) {
-      commentsDisplay = this.props.comments.map(comment => {
+    //console.log("FROM COMMENTS: this.props.comments", this.props.comments);
+    if (this.props.book.comments) {
+      commentsDisplay = this.props.book.comments.map(comment => {
         return <Comment key={comment.id} comment={comment} />;
       });
     }

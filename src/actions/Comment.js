@@ -3,10 +3,7 @@ import { normalizeResponseErrors } from "./Utils";
 import { fetchSharedBooks } from "./Shared-Books";
 
 export const addComment = commentData => dispatch => {
-  console.log("commentData", commentData);
-
   const bookId = commentData.book.id;
-  console.log("bookId", bookId);
 
   const authToken = localStorage.getItem("authToken");
   dispatch(addCommentRequest(true));
@@ -25,12 +22,10 @@ export const addComment = commentData => dispatch => {
     })
     .then(res => res.json())
     .then(createdComment => {
-      console.log("createdComment", createdComment);
       return dispatch(addCommentToBook(createdComment, bookId));
     })
 
     .catch(err => {
-      console.log("Error!", err);
       return dispatch(addCommentError(err));
     });
 };
@@ -59,7 +54,6 @@ export const addCommentToBook = (createdComment, bookId) => dispatch => {
       dispatch(fetchSharedBooks());
     })
     .catch(err => {
-      console.log("Error!", err);
       return dispatch(addCommentError(err));
     });
 };

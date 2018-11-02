@@ -2,54 +2,33 @@ import React from "react";
 import ToggleInfo from "./partials/Toggle-Info";
 import Toggle from "./partials/Toggle";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
-import { FaArrowCircleDown, FaArrowCircleUp } from "react-icons/fa";
+import { FaArrowCircleUp } from "react-icons/fa";
 import { changeVote } from "../actions/Votes";
 import { connect } from "react-redux";
-import { loadBookIntoSingleView } from "../actions/View-Book";
-import { Redirect, withRouter } from "react-router-dom";
+
+import { withRouter } from "react-router-dom";
 import Comments from "./Comments";
+import { Nuggets } from "./Nuggets";
 
 export class Book extends React.Component {
   upVote = event => {
-    //this.refs.btn.setAttribute("disabled", "disabled");
     const bookId = event.currentTarget.id;
     const voteAction = {};
     voteAction.voteAction = "up";
     this.props.dispatch(changeVote(bookId, voteAction));
   };
   downVote = event => {
-    //this.refs.btn.setAttribute("disabled", "disabled");
     const bookId = event.currentTarget.id;
     const voteAction = {};
     voteAction.voteAction = "down";
-
     this.props.dispatch(changeVote(bookId, voteAction));
   };
-  openBook = event => {
-    const bookId = event.currentTarget.id;
-    //console.log("bookId!!!!", bookId);
-    // const address = `/viewbook/`;
-    //console.log("Address", address);
-    const { book } = this.props;
-    console.log("book sent from openBook", book);
-    this.props.dispatch(loadBookIntoSingleView(book));
-    // return <Redirect to="/viewbook" />;
-    this.props.history.push("/viewbook");
-  };
+
   render() {
-    let nuggetsDisplay;
-    if (this.props.book.nuggets) {
-      nuggetsDisplay = this.props.book.nuggets.map(nugget => {
-        return (
-          <li>
-            <div>{nugget.description}</div>
-            <div>{nugget.fromPage}</div>
-            <div>{nugget.toPage}</div>
-          </li>
-        );
-      });
-    }
-    let toggleInfo;
+    const { book } = this.props;
+    console.log("book", book);
+    // console.log("this.props", this.props);
+    // console.log("book", book);
     const {
       title,
       author,
@@ -57,14 +36,20 @@ export class Book extends React.Component {
       id,
       image,
       votes,
-      description
+      description,
+      nuggets
     } = this.props.book;
+    console.log("image", image);
+    let nuggetsDisplay, toggleInfo;
+    if (this.props.book.nuggets) {
+      nuggetsDisplay = <Nuggets nuggets={nuggets} />;
+    }
     if (this.props.description !== "") {
       toggleInfo = <ToggleInfo info={description} />;
     }
 
     return (
-      <div className="book">
+      <div className="book" onClick={this.props.onClick}>
         <h4>{title}</h4>
         <h6>{subtitle}</h6>
         <h6>{author}</h6>
@@ -77,17 +62,12 @@ export class Book extends React.Component {
         </span>
         {toggleInfo}
 
-        <img
-          className="book-image"
-          src={image}
-          onClick={e => this.openBook(e)}
-          id={id}
-        />
+        <img className="book-image" src={image} id={id} />
         <ul>{nuggetsDisplay}</ul>
         <Toggle>
           {({ on, toggle }) => (
             <div>
-              {!on && <button onClick={toggle}>Comments</button>}
+              {!on && <a onClick={toggle}>Comments</a>}
               {on && (
                 <div>
                   <FaArrowCircleUp onClick={toggle} />

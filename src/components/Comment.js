@@ -34,6 +34,7 @@ export class Comment extends React.Component {
   render() {
     let commentInputDisplay;
     if (this.state.showCommentInput) {
+      console.log("HIt it");
       commentInputDisplay = (
         <div>
           <form onSubmit={this.handleSubmit}>
@@ -48,15 +49,15 @@ export class Comment extends React.Component {
         </div>
       );
     }
+    console.log("comments!!", this.props.comment);
     const { comment } = this.props;
+    //<span>{comment.author}</span>
     return (
-      <div>
-        <span>{comment.author}</span>
+      <li key={comment.id}>
         <p>{comment.text}</p>
-        <h1>Comments22</h1>
-        <button onClick={this.addComment}>Add Comment</button>
+        <a onClick={this.addComment}>Add Comment</a>
         {commentInputDisplay}
-      </div>
+      </li>
     );
   }
 }
