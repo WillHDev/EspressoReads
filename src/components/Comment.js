@@ -49,13 +49,23 @@ export class Comment extends React.Component {
     //   );
     // }
     // {commentInputDisplay}
-    const { comment } = this.props;
+    const { comments } = this.props;
+    console.log("this.props", this.props);
+    console.log("this.props in Comment", comments);
+    let commentsDisplay;
+    commentsDisplay = comments.map(comment => {
+      return (
+        <li key={comment.id}>
+          <p>{comment.text}</p>
+        </li>
+      );
+    });
     //<span>{comment.author}</span>
     return (
-      <li key={comment.id}>
-        <p>{comment.text}</p>
+      <div>
         <a onClick={this.addComment}>Add Comment</a>
-      </li>
+        <ul>{commentsDisplay}</ul>
+      </div>
     );
   }
 }

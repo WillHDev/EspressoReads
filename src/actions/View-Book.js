@@ -9,13 +9,12 @@ export const loadBookIntoSingleViewRequest = () => ({
 });
 export const LOAD_BOOK_INTO_SINGLE_VIEW_SUCCESS =
   "LOAD_BOOK_INTO_SINGLE_VIEW_SUCCESS";
-export const loadBookIntoSingleViewSuccess = book => (
-  console.log("book returned to success action", book),
-  {
+export const loadBookIntoSingleViewSuccess = book =>
+  //console.log("book returned to success action", book),
+  ({
     type: LOAD_BOOK_INTO_SINGLE_VIEW_SUCCESS,
     book
-  }
-);
+  });
 export const LOAD_BOOK_INTO_SINGLE_VIEW_ERROR =
   "LOAD_BOOK_INTO_SINGLE_VIEW_ERROR";
 export const loadBookIntoSingleViewError = message => ({
@@ -31,7 +30,7 @@ export const removeBookFromSingleView = () => ({
 export const loadBookIntoSingleView = bookId => dispatch => {
   const token = localStorage.getItem("authToken");
   // const bookId = this.props.match.params.id;
-  console.log("id action", bookId);
+  //console.log("id action", bookId);
   //console.log("API_BASE_URL", API_BASE_URL);
   fetch(`${API_BASE_URL}/api/books/${bookId}`, {
     method: "GET",
@@ -41,14 +40,10 @@ export const loadBookIntoSingleView = bookId => dispatch => {
     }
   })
     .then(res => {
-      console.log("res", res);
+      //console.log("res", res);
       return res.json();
     })
     .then(book => {
-      console.log(
-        "book in action returned from server about to send success",
-        book
-      );
       dispatch(loadBookIntoSingleViewSuccess(book));
       //**** */
     })

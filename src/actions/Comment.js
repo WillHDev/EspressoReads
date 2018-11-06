@@ -1,6 +1,7 @@
 import { API_BASE_URL } from "../config";
 import { normalizeResponseErrors } from "./Utils";
 import { fetchSharedBooks } from "./Shared-Books";
+import { loadBookIntoSingleView } from "./View-Book";
 
 export const addComment = commentData => dispatch => {
   // console.log("addComment action hit");
@@ -49,14 +50,17 @@ export const addCommentToBook = (createdComment, bookId) => dispatch => {
     })
     .then(res => res.json())
     .then(book => {
-      //console.log("book from comment action", book);
+      console.log("book from comment action", book);
 
       //updatedBookData
-      return dispatch(addCommentToBookSuccess());
+
+      dispatch(addCommentToBookSuccess());
+      return book;
     })
-    .then(() => {
+    .then(book => {
       //dispatch(updateSingleView())
-      dispatch(fetchSharedBooks());
+      dispatch(loadBookIntoSingleView());
+      dispatch(fetchSharedBooks(book.id));
     })
     .catch(err => {
       return dispatch(addCommentError(err));

@@ -7,7 +7,7 @@ import { changeVote } from "../actions/Votes";
 import { connect } from "react-redux";
 
 import { withRouter } from "react-router-dom";
-import Comments from "./Comments";
+import AddComment from "./Add-Comment";
 import { Nuggets } from "./Nuggets";
 
 export class Book extends React.Component {
@@ -74,7 +74,7 @@ export class Book extends React.Component {
                 <div>
                   <FaArrowCircleUp onClick={toggle} />
 
-                  <Comments book={this.props.book} />
+                  <AddComment book={this.props.book} />
                 </div>
               )}
             </div>

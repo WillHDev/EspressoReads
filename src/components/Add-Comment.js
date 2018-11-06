@@ -4,7 +4,7 @@ import Comment from "./Comment";
 import { addComment } from "../actions/Comment";
 import { connect } from "react-redux";
 
-export class Comments extends React.Component {
+export class AddComment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,6 +45,10 @@ export class Comments extends React.Component {
     //     return <Comment key={comment.id} comment={comment} />;
     //   });
     // }
+    console.log(
+      "this.props.viewBook.book.comments",
+      this.props.viewBook.book.comments
+    );
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -59,12 +63,14 @@ export class Comments extends React.Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
+        <Comment comments={this.props.viewBook.book.comments} />
       </div>
     );
   }
 }
 const mapStateToProps = state => ({
-  currentUser: state.auth.currentUser
+  currentUser: state.auth.currentUser,
+  viewBook: state.viewBook
 });
 
-export default connect(mapStateToProps)(Comments);
+export default connect(mapStateToProps)(AddComment);

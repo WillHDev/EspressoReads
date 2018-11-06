@@ -22,10 +22,8 @@ export class BookPage extends React.Component {
   //   this.props.dispatch(removeBookFromSingleView());
   // };
   componentWillMount = () => {
-    //this.props.dispatch(loadBookIntoSingleView(this.))
-    // this.setState({ view: this.props.book });
     const bookId = this.props.match.params.id;
-    console.log("bookId", bookId);
+
     this.props.dispatch(loadBookIntoSingleView(bookId));
   };
   backToBooklist = () => {
@@ -35,7 +33,7 @@ export class BookPage extends React.Component {
   render() {
     //const { book } = this.props;
     const book = this.props.viewBook.book;
-    console.log("book state from book page", book);
+
     //let toggleInfo;
     // if (this.props.description !== "") {
     //   toggleInfo = <ToggleInfo info={this.props.description} />;
