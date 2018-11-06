@@ -6,9 +6,10 @@ import { withRouter } from "react-router-dom";
 
 export class BookList extends React.Component {
   openBook = book => {
+    console.log("open book hit in booklist", book);
     // event.preventDefault();
     // const book = event.target;
-    console.log("book", book);
+    //console.log("book", book);
 
     //this.props.dispatch(loadBookIntoSingleView(book));
     //this.props.history.push("/viewbook");
@@ -29,11 +30,11 @@ export class BookList extends React.Component {
       );
     } else {
       //order by vote count
-      console.log("this.props.sharedBooks", this.props.sharedBooks);
+      //console.log("this.props.sharedBooks", this.props.sharedBooks);
       const orderedBooks = this.props.sharedBooks.sort(function(a, b) {
         return a.votes - b.votes;
       });
-      console.log("orderedBooks", orderedBooks);
+      //console.log("orderedBooks", orderedBooks);
       return (
         <div>
           {orderedBooks.map((book, i) => (

@@ -3,6 +3,8 @@ import { normalizeResponseErrors } from "./Utils";
 import { fetchSharedBooks } from "./Shared-Books";
 
 export const addComment = commentData => dispatch => {
+  // console.log("addComment action hit");
+
   const bookId = commentData.book.id;
 
   const authToken = localStorage.getItem("authToken");
@@ -47,7 +49,7 @@ export const addCommentToBook = (createdComment, bookId) => dispatch => {
     })
     .then(res => res.json())
     .then(book => {
-      console.log("book from comment action", book);
+      //console.log("book from comment action", book);
 
       //updatedBookData
       return dispatch(addCommentToBookSuccess());

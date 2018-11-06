@@ -5,12 +5,19 @@ import { addComment } from "../actions/Comment";
 import { connect } from "react-redux";
 
 export class Comments extends React.Component {
-  state = {
-    comment: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      comment: ""
+    };
+
+    this.updateCommentState = this.updateCommentState.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log("handleSubmit hit in comments");
     const comment = this.state.comment;
     //userID, book, comment location
     const { book } = this.props;
@@ -31,25 +38,27 @@ export class Comments extends React.Component {
   render() {
     const userId = this.props.currentUser.id;
 
-    let commentsDisplay;
-
-    if (this.props.book.comments) {
-      commentsDisplay = this.props.book.comments.map(comment => {
-        return <Comment key={comment.id} comment={comment} />;
-      });
-    }
+    // let commentsDisplay;
+    // <ul>{commentsDisplay} </ul>
+    // if (this.props.book.comments) {
+    //   commentsDisplay = this.props.book.comments.map(comment => {
+    //     return <Comment key={comment.id} comment={comment} />;
+    //   });
+    // }
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="add a comment"
-            value={this.state.comment}
-            onChange={e => this.updateCommentState(e)}
-            type="text"
-          />
+          <label>
+            Comment:
+            <input
+              placeholder="add a comment"
+              value={this.state.comment}
+              onChange={this.updateCommentState}
+              type="text"
+            />
+          </label>
           <input type="submit" value="Submit" />
         </form>
-        <ul>{commentsDisplay} </ul>
       </div>
     );
   }

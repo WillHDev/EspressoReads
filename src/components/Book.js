@@ -46,7 +46,7 @@ export class Book extends React.Component {
     }
 
     return (
-      <div className="book" onClick={this.props.onClick}>
+      <div className="book">
         <h4>{title}</h4>
         <h6>{subtitle}</h6>
         <h6>{author}</h6>
@@ -59,7 +59,12 @@ export class Book extends React.Component {
         </span>
         {toggleInfo}
 
-        <img className="book-image" src={image} id={id} />
+        <img
+          className="book-image"
+          src={image}
+          id={id}
+          onClick={this.props.onClick}
+        />
         <ul>{nuggetsDisplay}</ul>
         <Toggle>
           {({ on, toggle }) => (

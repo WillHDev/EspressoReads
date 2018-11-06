@@ -3,7 +3,7 @@ import { normalizeResponseErrors } from "./Utils";
 import { authRequest, login, authError } from "./Auth";
 
 export const registerUser = user => dispatch => {
-  console.log("Hit reg action");
+  //("Hit reg action");
   dispatch(authRequest()); //set loading to true while waiting
   return fetch(`${API_BASE_URL}/api/users`, {
     method: "POST",
@@ -14,7 +14,7 @@ export const registerUser = user => dispatch => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => {
-      console.log("res from reg post before login", res);
+      //  console.log("res from reg post before login", res);
       res.json();
     })
 
