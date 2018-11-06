@@ -2,6 +2,10 @@ import { API_BASE_URL } from "../config";
 import { normalizeResponseErrors } from "./Utils";
 import { fetchUserBooks } from "./Protected-Data";
 import { postNewNuggets } from "./Nuggets";
+import { loadBookIntoSingleView } from "./View-Book";
+// import createHistory from 'history/createHashHistory'
+// export default createHistory();
+import { history } from "../index";
 
 export const SHOW_NEW_BOOK_STATE = "SHOW_NEW_BOOK_STATE";
 export const showNewBookState = bool => ({
@@ -36,13 +40,13 @@ export const postNewBookSuccess = () => ({
 });
 
 export const postNewBook = (bookData, nuggets) => dispatch => {
-  console.log("dispatch", dispatch);
+  // console.log("dispatch", dispatch);
   dispatch(postNewNuggets(nuggets))
     .then(nuggetIds => {
       dispatch(postNewBookRequest());
-      console.log("Big time", bookData, nuggetIds);
+      //  console.log("Big time", bookData, nuggetIds);
       const token = localStorage.getItem("authToken");
-      console.log("token token token", token);
+      //  console.log("token token token", token);
       const bodyObj = {};
       bodyObj.nuggetIds = nuggetIds;
       bodyObj.bookData = bookData;
@@ -59,8 +63,10 @@ export const postNewBook = (bookData, nuggets) => dispatch => {
 
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(res => {
-      return dispatch(updateNewBookState({ id: res.id }));
+    .then(book => {
+      //return dispatch(updateNewBookState({ id: res.id }));
+      //return dispatch(loadBookIntoSingleView(book.id));
+      history.push(`/book/${book.id}`);
     })
     .then(() => {
       dispatch(postNewBookSuccess());

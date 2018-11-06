@@ -8,7 +8,7 @@ export default class NewBookSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: "",
+      searchTerm: null,
       booksToDisplay: [],
       showSearchInput: false,
       expandDescription: {}
@@ -58,7 +58,10 @@ export default class NewBookSearch extends Component {
       })
     );
     this.setState(({ booksToDisplay }) => {
-      return { booksToDisplay: null };
+      return {
+        booksToDisplay: null,
+        searchTerm: null
+      };
     });
   }
   showSearchInput = () => {
@@ -95,9 +98,9 @@ export default class NewBookSearch extends Component {
   }
   render() {
     let alertBox;
-    if (!this.state.booksToDisplay) {
+    if (!this.state.booksToDisplay && this.state.searchTerm !== null) {
       alertBox = (
-        <h2 className="form-error">I'm Sorry We Couldn't Find Your Book</h2>
+        <h2 className="form-error">Sorry We Couldn't Find Your Book</h2>
       );
     }
 
