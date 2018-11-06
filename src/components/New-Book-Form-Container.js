@@ -14,6 +14,29 @@ export class NewBookFormContainer extends Component {
       nuggetCount: 0
     };
   }
+
+  addNugget = e => {
+    this.setState(prevState => ({
+      nuggets: [
+        ...prevState.nuggets,
+        { fromPage: "", toPage: "", description: "" }
+      ]
+    }));
+  };
+
+  handleChange = e => {
+    const nuggetUpdate = e.target.value;
+    const key = e.target.className;
+    const index = e.target.name;
+    console.log("index", index, key, nuggetUpdate);
+    const targetState = this.state.nuggets;
+    targetState[index][key] = nuggetUpdate;
+
+    this.setState({
+      nuggets: targetState
+    });
+  };
+
   submitNewEntry = () => {
     const newEntry = {
       userId: this.props.currentUser.id,
@@ -25,10 +48,10 @@ export class NewBookFormContainer extends Component {
       Url: this.props.newBook.Url,
       image: this.props.newBook.image
     };
-
-    const nuggetsObject = {};
-    nuggetsObject.nuggets = this.state.nuggets;
-    this.props.dispatch(postNewBook(newEntry, nuggetsObject));
+    console.log("New Entry", newEntry);
+    // const nuggetsObject = {};
+    // nuggetsObject.nuggets = this.state.nuggets;
+    // this.props.dispatch(postNewBook(newEntry, nuggetsObject));
   };
   updateFromPageState(event) {
     const nuggetId = event.target.id;
@@ -67,25 +90,24 @@ export class NewBookFormContainer extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.dispatch(
-      postNewBook({
-        ...this.props.newBook,
-        nuggets: this.state.nuggets
-      })
-    );
+    console.log("this.props.newBook", this.props.newBook);
+
+    console.log("   this.state.nuggets", this.state.nuggets);
+    const bookData = {
+      userId: this.props.currentUser.id,
+      title: this.props.newBook.title,
+      subtitle: this.props.newBook.subtitle,
+      description: this.props.newBook.description,
+      authors: this.props.newBook.authors,
+      id: this.props.newBook.id,
+      Url: this.props.newBook.Url,
+      image: this.props.newBook.image
+    };
+    const nuggetsObject = {};
+    nuggetsObject.nuggets = this.state.nuggets;
+    this.props.dispatch(postNewBook(bookData, nuggetsObject));
   };
 
-  addNugget = () => {
-    const newNuggetCount = this.state.nuggetCount + 1;
-    const newNuggetId = "nugget" + newNuggetCount;
-    const newNuggetObject = {};
-    newNuggetObject.name = newNuggetId;
-
-    this.setState({
-      nuggetCount: newNuggetCount,
-      nuggets: [...this.state.nuggets, newNuggetObject]
-    });
-  };
   render() {
     let nuggetInputsDisplay, actionButtons;
     if (this.props.newBook.title === "") {
@@ -96,19 +118,15 @@ export class NewBookFormContainer extends Component {
           <button type="button" onClick={this.addNugget}>
             Add Nugget
           </button>
-          <button
-            type="submit"
-            id="submit-new-entry"
-            onClick={this.submitNewEntry}
-          >
-            Submit
-          </button>
+          <input type="submit" value="Submit" />
         </div>
       );
     }
 
-    if (this.state.nuggetCount > 0) {
-      nuggetInputsDisplay = this.state.nuggets.map((nugget, i) => {
+    if (this.state.nuggets !== null) {
+      const { nuggets } = this.state;
+      console.log("nuggets", nuggets);
+      nuggetInputsDisplay = nuggets.map((nugget, i) => {
         const nuggetId = `nugget` + `${[i + 1]}`;
         return (
           <div key={nuggetId}>
@@ -117,29 +135,31 @@ export class NewBookFormContainer extends Component {
 
             <input
               placeholder="page"
-              value={this.state.nuggets[i].fromPage}
-              onChange={e => this.updateFromPageState(e)}
+              value={nuggets[i].fromPage}
+              //onChange={e => this.updateFromPageState(e)}
               type="text"
               id={nuggetId}
               title="from"
-              name={[i]}
+              name={i}
+              className="fromPage"
             />
             <span>to</span>
             <input
               placeholder="page"
-              value={this.state.nuggets[i].toPage}
-              onChange={e => this.updateToPageState(e)}
+              value={nuggets[i].toPage}
               type="text"
               id={nuggetId}
-              name={[i]}
+              name={i}
+              className="toPage"
             />
             <ToggleInput
               text={["Add Description"]}
               method={this.fireAction}
               onChange={e => this.updateDescriptionState(e)}
-              value={this.state.nuggets[i].description}
-              name={[i]}
+              value={nuggets[i].description}
+              name={i}
               id={nuggetId}
+              className="description"
             />
           </div>
         );
@@ -147,9 +167,11 @@ export class NewBookFormContainer extends Component {
     }
     return (
       <div className="new-book-form-container">
-        {nuggetInputsDisplay}
+        <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+          {nuggetInputsDisplay}
 
-        {actionButtons}
+          {actionButtons}
+        </form>
         <NewBookForm onSubmit={e => this.handleSubmit(e)} {...this.props} />
         <NewBookSearch dispatch={this.props.dispatch} />
       </div>

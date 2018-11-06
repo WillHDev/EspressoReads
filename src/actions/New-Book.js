@@ -40,6 +40,7 @@ export const postNewBookSuccess = () => ({
 });
 
 export const postNewBook = (bookData, nuggets) => dispatch => {
+  console.log("nuggets from post new book", nuggets);
   // console.log("dispatch", dispatch);
   dispatch(postNewNuggets(nuggets))
     .then(nuggetIds => {

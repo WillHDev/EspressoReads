@@ -93,8 +93,9 @@ export default class NewBookSearch extends Component {
     this.expandDescription[id] = false;
   }
 
-  handleChange(event) {
-    this.setState({ nuggetOne: event.target.value });
+  updateNote(event) {
+    console.log("hit updateNote", event.target.value);
+    //this.setState({ Notes: event.target.value });
   }
   render() {
     let alertBox;
@@ -191,9 +192,9 @@ export default class NewBookSearch extends Component {
           <h2>Find a Book</h2>
           {alertBox}
           <ToggleInput
-            text={["Add Description", "Add"]}
-            method={this.fireAction}
-            onChange={e => this.handleChange(e)}
+            text={["Add a Note", "Add"]}
+            method={this.submitNote}
+            onChange={e => this.updateNote(e)}
           />
           <div>
             {showToggleButton}

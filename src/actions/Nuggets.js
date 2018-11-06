@@ -35,7 +35,8 @@ export const postNewNuggetsSuccess = () => ({
 });
 
 export const postNewNuggets = NuggetsData => dispatch => {
-  console.log("dispatch", dispatch);
+  console.log("NuggetsData", NuggetsData);
+
   dispatch(postNewNuggetsRequest());
 
   const token = localStorage.getItem("authToken");
