@@ -23,6 +23,7 @@ export class BookPage extends React.Component {
   // };
   componentWillMount = () => {
     const bookId = this.props.match.params.id;
+    console.log("bookId from bookPAge", bookId);
 
     this.props.dispatch(loadBookIntoSingleView(bookId));
   };

@@ -1,18 +1,14 @@
 import React from "react";
 import Book from "./Book";
-import { loadBookIntoSingleView } from "../actions/View-Book";
+import { fetchSharedBooks } from "../actions/Shared-Books";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 export class BookList extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(fetchSharedBooks());
+  }
   openBook = book => {
-    console.log("open book hit in booklist", book);
-    // event.preventDefault();
-    // const book = event.target;
-    //console.log("book", book);
-
-    //this.props.dispatch(loadBookIntoSingleView(book));
-    //this.props.history.push("/viewbook");
     this.props.history.push(`/book/${book.id}`);
   };
   render() {
@@ -34,7 +30,7 @@ export class BookList extends React.Component {
       const orderedBooks = this.props.sharedBooks.sort(function(a, b) {
         return a.votes - b.votes;
       });
-      //console.log("orderedBooks", orderedBooks);
+
       return (
         <div>
           {orderedBooks.map((book, i) => (

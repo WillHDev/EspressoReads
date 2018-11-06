@@ -59,8 +59,8 @@ export const addCommentToBook = (createdComment, bookId) => dispatch => {
     })
     .then(book => {
       //dispatch(updateSingleView())
-      dispatch(loadBookIntoSingleView());
-      dispatch(fetchSharedBooks(book.id));
+      dispatch(loadBookIntoSingleView(book.id));
+      dispatch(fetchSharedBooks());
     })
     .catch(err => {
       return dispatch(addCommentError(err));
