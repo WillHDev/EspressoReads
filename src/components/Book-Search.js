@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { updateNewBookState, newBookErrorMessage } from "../actions/New-Book";
 import $ from "jquery";
 import ToggleButton from "./partials/Toggle-Button";
 import ToggleInput from "./partials/Toggle-Input";
+import Toggle from "./partials/Toggle";
+import Modal from "./elements/Modal";
 
 export default class NewBookSearch extends Component {
   constructor(props) {
@@ -26,6 +28,10 @@ export default class NewBookSearch extends Component {
       }.bind(this),
       type: "GET"
     });
+    this.setState({
+      searchTerm: text
+    });
+
     this.textInput.value = "";
   }
   upDateStateWithFetchedBooks = items => {
@@ -98,13 +104,24 @@ export default class NewBookSearch extends Component {
     //this.setState({ Notes: event.target.value });
   }
   render() {
-    let alertBox;
-    if (!this.state.booksToDisplay && this.state.searchTerm !== null) {
-      alertBox = (
-        <h2 className="form-error">Sorry We Couldn't Find Your Book</h2>
-      );
-    }
-
+    // let alertBox;
+    // if (!this.state.booksToDisplay && this.state.searchTerm !== null) {
+    console.log("this.state.booksToDisplay", this.state.booksToDisplay);
+    console.log("this.state.searchTerm", this.state.searchTerm);
+    //   alertBox = (
+    //     <Toggle>
+    //       {({ on, toggle }) => (
+    //         <Fragment>
+    //           <button onClick={toggle}>Login</button>
+    //           <Modal on={on} toggle={toggle}>
+    //             <h1> Sorry we couldn't find your book</h1>
+    //           </Modal>
+    //         </Fragment>
+    //       )}
+    //     </Toggle>
+    //   );
+    // }
+    //<h2 className="form-error">Sorry We Couldn't Find Your Book</h2>
     let showBooks, showSearchInput, showToggleButton, descriptionButton;
     if (this.state.booksToDisplay) {
       console.log("this.state.booksToDisplay", this.state.booksToDisplay);
@@ -185,12 +202,32 @@ export default class NewBookSearch extends Component {
         </form>
       );
     }
-
+    // <button onClick={toggle}>Login</button>
+    let noResultsFound, showModal;
+    if (!this.state.booksToDisplay && this.state.searchTerm !== null) {
+      noResultsFound = true;
+    } else {
+      noResultsFound = false;
+    }
+    // if (noResultsFound) {
+    //   showModal = <a onload={toggle} />;
+    // } else {
+    //   showModal = <a />;
+    // }
+    //   {{noResultsFound} ? (<p onload={toggle}></p>) : (<p></p>)}
     return (
       <div className="new-book-search-container">
         <div className="parent">
           <h2>Find a Book</h2>
-          {alertBox}
+
+          <Fragment>
+            {noResultsFound && (
+              <Modal>
+                <h1> Sorry we couldn't find your book</h1>
+              </Modal>
+            )}
+          </Fragment>
+
           <ToggleInput
             text={["Add a Note", "Add"]}
             method={this.submitNote}
