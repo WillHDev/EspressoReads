@@ -35,7 +35,6 @@ class App extends Component {
   }
 
   goToLogin = () => {
-    console.log("Hit");
     this.setState({
       goToLogin: true
     });

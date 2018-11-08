@@ -15,8 +15,6 @@ export class HeaderBar extends Component {
     this.props.history.push("/newbook");
   };
   render() {
-    console.log("token???", localStorage.getItem("authToken"));
-
     return (
       <div className="nav-bar">
         <div className="wrapper">

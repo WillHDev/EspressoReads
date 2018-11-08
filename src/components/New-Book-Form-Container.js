@@ -28,7 +28,7 @@ export class NewBookFormContainer extends Component {
     const nuggetUpdate = e.target.value;
     const key = e.target.className;
     const index = e.target.name;
-    console.log("index", index, key, nuggetUpdate);
+
     const targetState = this.state.nuggets;
     targetState[index][key] = nuggetUpdate;
 
@@ -48,7 +48,7 @@ export class NewBookFormContainer extends Component {
       Url: this.props.newBook.Url,
       image: this.props.newBook.image
     };
-    console.log("New Entry", newEntry);
+
     // const nuggetsObject = {};
     // nuggetsObject.nuggets = this.state.nuggets;
     // this.props.dispatch(postNewBook(newEntry, nuggetsObject));
@@ -90,9 +90,7 @@ export class NewBookFormContainer extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("this.props.newBook", this.props.newBook);
 
-    console.log("   this.state.nuggets", this.state.nuggets);
     const bookData = {
       userId: this.props.currentUser.id,
       title: this.props.newBook.title,
@@ -125,7 +123,7 @@ export class NewBookFormContainer extends Component {
 
     if (this.state.nuggets !== null) {
       const { nuggets } = this.state;
-      console.log("nuggets", nuggets);
+
       nuggetInputsDisplay = nuggets.map((nugget, i) => {
         const nuggetId = `nugget` + `${[i + 1]}`;
         return (

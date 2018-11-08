@@ -44,7 +44,31 @@ export class Book extends React.Component {
     if (this.props.description !== "") {
       toggleInfo = <ToggleInfo info={description} />;
     }
-
+    let voteButtons;
+    //   <span className="float-right">UpVotes:</span>
+    if (this.props.singleView) {
+      voteButtons = (
+        <div className="votes">
+          {votes}
+          <div
+            onClick={e => this.upVote(e)}
+            ref="btn"
+            id={id}
+            className="float-right thumbs"
+          >
+            <FaThumbsUp id={id} />
+          </div>
+          <div
+            onClick={e => this.downVote(e)}
+            ref="btn"
+            id={id}
+            className="float-right thumbs"
+          >
+            <FaThumbsDown id={id} />
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="book-card">
         <div className="info">
@@ -54,16 +78,6 @@ export class Book extends React.Component {
           {toggleInfo}
         </div>
 
-        {votes}
-        <div className="votes">
-          <span onClick={e => this.upVote(e)} ref="btn" id={id}>
-            <FaThumbsUp id={id} />
-          </span>
-          <span onClick={e => this.downVote(e)} ref="btn" id={id}>
-            <FaThumbsDown id={id} />
-          </span>
-        </div>
-
         <img
           className="book-image"
           src={image}
@@ -71,6 +85,7 @@ export class Book extends React.Component {
           onClick={this.props.onClick}
         />
         <ul>{nuggetsDisplay}</ul>
+        {voteButtons}
         <Toggle>
           {({ on, toggle }) => (
             <div>

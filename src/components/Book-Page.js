@@ -23,7 +23,6 @@ export class BookPage extends React.Component {
   // };
   componentWillMount = () => {
     const bookId = this.props.match.params.id;
-    console.log("bookId from bookPAge", bookId);
 
     this.props.dispatch(loadBookIntoSingleView(bookId));
   };
@@ -47,7 +46,7 @@ export class BookPage extends React.Component {
         <div className="book-page">
           <a onClick={() => this.backToBooklist()}>Back</a>
           <HeaderBar />
-          <Book book={book} />
+          <Book singleView={book} book={book} />
         </div>
       );
     }

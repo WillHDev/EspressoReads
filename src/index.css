@@ -162,3 +162,10 @@ a.forums:before {
 .new-book-search-container {
   display: flex;
 }
+
+.float-right {
+  float: right;
+}
+.thumbs {
+  margin: 3px;
+}

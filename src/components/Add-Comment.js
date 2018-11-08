@@ -3,6 +3,7 @@ import { FaDivide } from "react-icons/fa";
 import Comment from "./Comment";
 import { addComment } from "../actions/Comment";
 import { connect } from "react-redux";
+import "../styles/Comment.css";
 
 export class AddComment extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export class AddComment extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("handleSubmit hit in comments");
+
     const comment = this.state.comment;
     //userID, book, comment location
     const { book } = this.props;
@@ -28,6 +29,7 @@ export class AddComment extends React.Component {
       userId,
       comment
     });
+
     this.props.dispatch(addComment(commentData));
   };
 
@@ -45,10 +47,7 @@ export class AddComment extends React.Component {
     //     return <Comment key={comment.id} comment={comment} />;
     //   });
     // }
-    console.log(
-      "this.props.viewBook.book.comments",
-      this.props.viewBook.book.comments
-    );
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

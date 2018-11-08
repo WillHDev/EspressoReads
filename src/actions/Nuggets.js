@@ -35,8 +35,6 @@ export const postNewNuggetsSuccess = () => ({
 });
 
 export const postNewNuggets = NuggetsData => dispatch => {
-  console.log("NuggetsData", NuggetsData);
-
   dispatch(postNewNuggetsRequest());
 
   const token = localStorage.getItem("authToken");
@@ -52,8 +50,7 @@ export const postNewNuggets = NuggetsData => dispatch => {
     .then(res => res.json())
     .then(nuggetIds => {
       dispatch(postNewNuggetsSuccess());
-      //return Promise.resolve();
-      console.log("nug ids from async return", nuggetIds);
+
       return nuggetIds;
     })
     .catch(err => Promise.reject(err));

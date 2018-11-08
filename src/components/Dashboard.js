@@ -51,7 +51,7 @@ export class Dashboard extends Component {
       <div className="dashboard-wrapper">
         <HeaderBar />
 
-        <h1 className="nuclei">Your Nuclei</h1>
+        <h1 className="nuclei">Espresso Reads</h1>
         <br />
         <br />
 

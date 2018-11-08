@@ -104,28 +104,8 @@ export default class NewBookSearch extends Component {
     //this.setState({ Notes: event.target.value });
   }
   render() {
-    // let alertBox;
-    // if (!this.state.booksToDisplay && this.state.searchTerm !== null) {
-    console.log("this.state.booksToDisplay", this.state.booksToDisplay);
-    console.log("this.state.searchTerm", this.state.searchTerm);
-    //   alertBox = (
-    //     <Toggle>
-    //       {({ on, toggle }) => (
-    //         <Fragment>
-    //           <button onClick={toggle}>Login</button>
-    //           <Modal on={on} toggle={toggle}>
-    //             <h1> Sorry we couldn't find your book</h1>
-    //           </Modal>
-    //         </Fragment>
-    //       )}
-    //     </Toggle>
-    //   );
-    // }
-    //<h2 className="form-error">Sorry We Couldn't Find Your Book</h2>
     let showBooks, showSearchInput, showToggleButton, descriptionButton;
     if (this.state.booksToDisplay) {
-      console.log("this.state.booksToDisplay", this.state.booksToDisplay);
-
       showBooks = this.state.booksToDisplay.map(item => {
         const { id } = item;
 
