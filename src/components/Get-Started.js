@@ -41,8 +41,8 @@ class GetStarted extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p className="about">Most of matter is empty space. </p>
-          <p className="about">Most of books are fluff. </p>
+          <p className="about">Espresso Reads: </p>
+          <p className="about">Insight Distilled </p>
           <br />
           <br />
           <p className="App-link" onClick={() => this.goToLogin()}>

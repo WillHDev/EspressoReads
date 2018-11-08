@@ -4,15 +4,19 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { changeCurrentUser } from "../actions/Protected-Data";
 import { FaSearch } from "react-icons/fa";
-//import Button from './Button';
+import "../styles/HeaderBar.css";
 
 export class HeaderBar extends Component {
-  logOut = () => {
-    localStorage.removeItem("authToken");
-    this.props.dispatch(changeCurrentUser(null));
+  state = {
+    searchTerm: ""
   };
   openForm = () => {
     this.props.history.push("/newbook");
+  };
+  searchBooks = e => {
+    // this.setState({
+    //   searchTerm: e.target.value
+    // });
   };
   render() {
     return (
@@ -23,20 +27,16 @@ export class HeaderBar extends Component {
               <nav className="main-nav">
                 <a className="almanac">
                   <input
-                    className="almanac"
                     type="text"
                     id="search"
                     placeholder="Search"
+                    onChange={this.props.searchFilter}
                   />
                   <br />
                 </a>
 
                 <a className="almanac" onClick={this.openForm}>
                   New
-                </a>
-
-                <a className="almanac" onClick={this.logOut}>
-                  Logout
                 </a>
               </nav>
             </div>

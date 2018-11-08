@@ -3,7 +3,11 @@ import logo from "./logo.svg";
 
 import "./App.css";
 import { connect } from "react-redux";
-import { fetchProtectedData } from "./actions/Protected-Data";
+import {
+  changeCurrentUser,
+  fetchProtectedData
+} from "./actions/Protected-Data";
+
 import { withRouter, Switch, Route, Redirect } from "react-router-dom";
 import LandingPage from "./components/Landing-Page";
 import Dashboard from "./components/Dashboard";
@@ -39,7 +43,10 @@ class App extends Component {
       goToLogin: true
     });
   };
-
+  logOut = () => {
+    localStorage.removeItem("authToken");
+    this.props.dispatch(changeCurrentUser(null));
+  };
   backToDashboard = () => {
     return this.props.history.push("/dashboard");
   };
@@ -48,13 +55,23 @@ class App extends Component {
     if (this.state.goToLogin === true) {
       return <Redirect to="/login" />;
     }
-    return (
-      <div className="App">
-        <img src="/src/images/coffee4.png" className="App-logo" alt="logo" />
+    //"/src/images/coffee4.png"
+
+    let homeButton;
+    if (this.props.loggedIn) {
+      homeButton = (
         <p>
           <a onClick={this.backToDashboard}> Home </a>
         </p>
-
+      );
+    }
+    return (
+      <div className="App">
+        <a className="logout-button" onClick={this.logOut}>
+          Logout
+        </a>
+        <img src={logo} className="App-logo" alt="logo" />
+        {homeButton}
         <div>
           <Route exact path="/" component={GetStarted} />
           <Route exact path="/login" component={LandingPage} />

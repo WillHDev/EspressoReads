@@ -15,18 +15,23 @@ export class Dashboard extends Component {
     this.state = {
       display: true,
       searchTerm: null,
-      singleBook: null
+      singleBook: null,
+      searchTerm: ""
     };
   }
 
   componentWillMount() {
-    //this.props.dispatch(fetchUserBooks());
+    this.setState({ sharedBooks: this.props.sharedBooks });
   }
 
   filterResults(searchTerm) {
     this.setState({ filterBooks: searchTerm });
   }
-
+  searchFilter = e => {
+    e.preventDefault();
+    const caseInsensitive = e.target.value.toUpperCase();
+    this.setState({ searchTerm: caseInsensitive });
+  };
   render() {
     let display;
 
@@ -35,13 +40,19 @@ export class Dashboard extends Component {
     } else if (!this.props.sharedBooks) {
       return <h2> Loading...</h2>;
     } else {
-      // if (this.props.viewBook.id !== "") {
-      //   display = <BookPage book={this.state.singleBook} />;
-      // } else {
+      let filteredBooks;
+      if (this.state.searchTerm !== "") {
+        filteredBooks = this.props.sharedBooks.filter(book => {
+          let uppercaseTitle = book.title.toUpperCase();
+          return uppercaseTitle.includes(this.state.searchTerm);
+        });
+      } else {
+        filteredBooks = this.props.sharedBooks;
+      }
       display = (
         <Booklist
           loading={this.props.loading}
-          sharedBooks={this.props.sharedBooks}
+          sharedBooks={filteredBooks}
           dispatch={this.props.dispatch}
         />
       );
@@ -49,7 +60,7 @@ export class Dashboard extends Component {
 
     return (
       <div className="dashboard-wrapper">
-        <HeaderBar />
+        <HeaderBar searchFilter={this.searchFilter} />
 
         <h1 className="nuclei">Espresso Reads</h1>
         <br />

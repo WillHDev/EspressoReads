@@ -56,3 +56,9 @@ container {
   position: absolute;
   top: 0;
 }
+
+.logout-button {
+  display: block;
+  float: right;
+  font-size: 10px;
+}

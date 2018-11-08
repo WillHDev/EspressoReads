@@ -42,8 +42,9 @@ export default class TextArea extends React.Component {
 
     return (
       <div>
-        <label htmlFor="textarea">Add some text...</label>
+        <label htmlFor="textarea" />
         <textarea
+          placeholder="Add a description..."
           className="textarea"
           name="textarea"
           id="textarea"

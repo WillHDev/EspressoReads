@@ -3,3 +3,8 @@
   padding: 0px;
   margin: 30px;
 }
+
+.back-to-search-button {
+  font-size: 22px;
+  float: right;
+}

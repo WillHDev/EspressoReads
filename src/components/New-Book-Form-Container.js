@@ -124,7 +124,11 @@ export class NewBookFormContainer extends Component {
         />
       );
     } else {
-      searchDisplay = <h6 onClick={this.toggleSearch}>Back to Search</h6>;
+      searchDisplay = (
+        <h6 className="back-to-search-button" onClick={this.toggleSearch}>
+          Back to Search
+        </h6>
+      );
     }
 
     if (this.props.newBook.title === "") {
