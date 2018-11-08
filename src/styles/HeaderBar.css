@@ -110,3 +110,10 @@ a.forums:before {
   box-sizing: inline-block;
   width: 100%;
 }
+
+@media not all and (min-width: 765px) {
+  .almanac {
+    /*css for small screens goes here*/
+    height: 20px;
+  }
+}

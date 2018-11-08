@@ -49,7 +49,7 @@ class GetStarted extends Component {
           Login
         </p>
         <header className="App-header">
-          <p className="Insight about">Insight Distilled </p>
+          <p className="Insight about">Strong Reads Brewed Daily</p>
           <br />
           <br />
           <p className="App-link" onClick={() => this.goToRegistration()}>

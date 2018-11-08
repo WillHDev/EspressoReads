@@ -34,6 +34,7 @@ export default class ToggleInput extends React.Component {
             htmlFor={this.props.text}
             type="button"
             onClick={this.switchButtons}
+            className="search-button"
           >
             {text[0]}
           </button>
@@ -43,6 +44,7 @@ export default class ToggleInput extends React.Component {
       return (
         <div className="toggle-input">
           <button
+            className="search-button"
             htmlFor={this.props.text}
             type="button"
             onClick={this.firePropsMethod}

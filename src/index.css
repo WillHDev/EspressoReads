@@ -29,6 +29,12 @@ ul {
 * {
   box-sizing: border-box;
 }
+@media not all and (min-width: 765px) {
+  * {
+    /*css for small screens goes here*/
+    box-sizing: content-box;
+  }
+}
 
 body {
   background-color: #131313;

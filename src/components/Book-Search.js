@@ -5,6 +5,7 @@ import ToggleButton from "./partials/Toggle-Button";
 import ToggleInput from "./partials/Toggle-Input";
 import Toggle from "./partials/Toggle";
 import Modal from "./elements/Modal";
+import "../styles/BookForm.css";
 
 export default class NewBookSearch extends Component {
   constructor(props) {
@@ -170,7 +171,12 @@ export default class NewBookSearch extends Component {
     }
     if (this.state.showSearchInput === false) {
       showToggleButton = (
-        <button id="button" type="button" onClick={this.showSearchInput}>
+        <button
+          id="button"
+          className=" search-button"
+          type="button"
+          onClick={this.showSearchInput}
+        >
           Search Books
         </button>
       );

@@ -46,7 +46,9 @@ export class BookPage extends React.Component {
         <div className="book-page">
           <a onClick={() => this.backToBooklist()}>Back</a>
           <HeaderBar />
-          <Book singleView={book} book={book} />
+          <div className="single-book">
+            <Book singleView={book} book={book} />
+          </div>
         </div>
       );
     }
