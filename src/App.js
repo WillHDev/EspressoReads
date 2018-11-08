@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-
+import coffeewhite from "./images/coffeewhite.svg";
 import "./App.css";
 import { connect } from "react-redux";
 import {
@@ -65,13 +65,15 @@ class App extends Component {
         </p>
       );
     }
+    //  {homeButton}
     return (
       <div className="App">
         <a className="logout-button" onClick={this.logOut}>
           Logout
         </a>
-        <img src={logo} className="App-logo" alt="logo" />
-        {homeButton}
+        <h1 className="nuclei">Espresso Reads</h1>
+        <img src={coffeewhite} className="logo" alt="logo" />
+
         <div>
           <Route exact path="/" component={GetStarted} />
           <Route exact path="/login" component={LandingPage} />

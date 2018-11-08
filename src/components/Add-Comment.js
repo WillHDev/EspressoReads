@@ -31,6 +31,7 @@ export class AddComment extends React.Component {
     });
 
     this.props.dispatch(addComment(commentData));
+    this.setState({ comment: "" });
   };
 
   updateCommentState = event => {
@@ -47,12 +48,13 @@ export class AddComment extends React.Component {
     //     return <Comment key={comment.id} comment={comment} />;
     //   });
     // }
-
+    //   <label>
+    console.log("rednered add comment");
     return (
       <div>
+        <Comment comments={this.props.viewBook.book.comments} />
         <form onSubmit={this.handleSubmit}>
           <label>
-            Comment:
             <input
               placeholder="add a comment"
               value={this.state.comment}
@@ -60,9 +62,9 @@ export class AddComment extends React.Component {
               type="text"
             />
           </label>
+
           <input type="submit" value="Submit" />
         </form>
-        <Comment comments={this.props.viewBook.book.comments} />
       </div>
     );
   }

@@ -62,7 +62,6 @@ export class Dashboard extends Component {
       <div className="dashboard-wrapper">
         <HeaderBar searchFilter={this.searchFilter} />
 
-        <h1 className="nuclei">Espresso Reads</h1>
         <br />
         <br />
 

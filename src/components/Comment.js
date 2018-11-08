@@ -18,7 +18,7 @@ export class Comment extends React.Component {
 
     return (
       <div className="comments-container grid2">
-        <a onClick={this.addComment}>Add Comment</a>
+        <a onClick={this.addComment} />
         {commentsDisplay}
       </div>
     );

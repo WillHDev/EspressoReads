@@ -70,7 +70,7 @@ export class Book extends React.Component {
       );
     }
     return (
-      <div className="book-card">
+      <div className="">
         <div className="info">
           {" "}
           <h4>{title}</h4>
