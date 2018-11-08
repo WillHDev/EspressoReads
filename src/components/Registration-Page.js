@@ -10,8 +10,11 @@ export function RegistrationPage(props) {
   return (
     <div className="container">
       <div className="form-container">
-        <h1>Join Goodtimes</h1>
-        <p>Create an account, create events, invite your friends and more!</p>
+        <h1>Join Expresso Reads</h1>
+        <p>
+          Create an account, find great reads, and share your own Book Espresso
+          with others!{" "}
+        </p>
 
         <RegistrationForm errorMessage={props.errorMessage} />
       </div>

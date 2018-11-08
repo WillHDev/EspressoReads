@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TextArea from "./partials/Text-Area";
+import "../styles/BookForm.css";
 
 export default class NewBookForm extends Component {
   constructor() {
@@ -22,6 +23,20 @@ export default class NewBookForm extends Component {
     }
     return (
       <div className="new-book-form" onSubmit={e => this.onSubmit(e)}>
+        <label htmlFor="bookTitle">Title</label>
+        <h6 className="bookform-title">{title}</h6>
+        <a
+          htmlFor="bookDescription"
+          type="button"
+          onClick={this.expandDescription}
+        >
+          Show Description
+        </a>
+        {this.state.expandDescription ? (
+          <TextArea value={description} id={id} />
+        ) : (
+          ""
+        )}
         <a>
           {" "}
           <div
@@ -32,20 +47,6 @@ export default class NewBookForm extends Component {
             }}
           />
         </a>
-        <label htmlFor="bookTitle">Title</label>
-        <h6>{title}</h6>
-        <button
-          htmlFor="bookDescription"
-          type="button"
-          onClick={this.expandDescription}
-        >
-          Show Description
-        </button>
-        {this.state.expandDescription ? (
-          <TextArea value={description} id={id} />
-        ) : (
-          ""
-        )}
       </div>
     );
   }

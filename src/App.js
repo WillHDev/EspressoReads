@@ -52,7 +52,7 @@ class App extends Component {
       <div className="App">
         <img src="/src/images/coffee4.png" className="App-logo" alt="logo" />
         <p>
-          <button onClick={this.backToDashboard}> Nucleus </button>
+          <a onClick={this.backToDashboard}> Home </a>
         </p>
 
         <div>

@@ -30,15 +30,13 @@ export class HeaderBar extends Component {
                   />
                   <br />
                 </a>
-                <a className="almanac">
-                  <button className="almanac" onClick={this.openForm}>
-                    New
-                  </button>
+
+                <a className="almanac" onClick={this.openForm}>
+                  New
                 </a>
-                <a className="almanac">
-                  <button className="almanac" onClick={this.logOut}>
-                    Logout
-                  </button>
+
+                <a className="almanac" onClick={this.logOut}>
+                  Logout
                 </a>
               </nav>
             </div>

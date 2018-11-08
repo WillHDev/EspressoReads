@@ -69,6 +69,7 @@ export default class NewBookSearch extends Component {
         searchTerm: null
       };
     });
+    this.props.showSearch();
   }
   showSearchInput = () => {
     this.setState(({ showSearchInput }) => {
@@ -105,6 +106,7 @@ export default class NewBookSearch extends Component {
   }
   render() {
     let showBooks, showSearchInput, showToggleButton, descriptionButton;
+    //const { showSearch } = this.props;
     if (this.state.booksToDisplay) {
       showBooks = this.state.booksToDisplay.map(item => {
         const { id } = item;
@@ -128,7 +130,9 @@ export default class NewBookSearch extends Component {
           <div
             key={id}
             className="book-card"
-            onDoubleClick={() => this.selectBook(id)}
+            onDoubleClick={() => {
+              this.selectBook(id);
+            }}
           >
             <div>{title}</div>
             <div>{authors}</div>

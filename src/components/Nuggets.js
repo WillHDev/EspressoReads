@@ -1,15 +1,21 @@
 import React from "react";
+import "../styles/Nuggets.css";
 
 export class Nuggets extends React.Component {
   render() {
-    return this.props.nuggets.map(nugget => {
+    const nuggetsDisplay = this.props.nuggets.map(nugget => {
       return (
-        <li>
-          <div>{nugget.description}</div>
-          <div>{nugget.fromPage}</div>
-          <div>{nugget.toPage}</div>
-        </li>
+        <div className="nugget-card">
+          <div className="nugget-description">{nugget.description}</div>
+          <div className="nugget-pages">
+            <div>
+              <span>{nugget.fromPage} - </span>
+              <span>{nugget.toPage}</span>
+            </div>
+          </div>
+        </div>
       );
     });
+    return <div className="grid">{nuggetsDisplay}</div>;
   }
 }

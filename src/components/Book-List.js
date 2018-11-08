@@ -1,5 +1,5 @@
 import React from "react";
-import Book from "./Book";
+import BookAll from "./Book-All";
 import { fetchSharedBooks } from "../actions/Shared-Books";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -35,7 +35,7 @@ export class BookList extends React.Component {
       return (
         <div className="grid">
           {orderedBooks.map((book, i) => (
-            <Book
+            <BookAll
               key={i}
               id={book}
               book={book}

@@ -11,7 +11,8 @@ export class NewBookFormContainer extends Component {
     super();
     this.state = {
       nuggets: [],
-      nuggetCount: 0
+      nuggetCount: 0,
+      showSearch: true
     };
   }
 
@@ -106,16 +107,34 @@ export class NewBookFormContainer extends Component {
     this.props.dispatch(postNewBook(bookData, nuggetsObject));
   };
 
+  toggleSearch = () => {
+    this.setState({
+      showSearch: !this.state.showSearch
+    });
+  };
+
   render() {
-    let nuggetInputsDisplay, actionButtons;
+    let nuggetInputsDisplay, actionButtons, searchDisplay;
+
+    if (this.state.showSearch) {
+      searchDisplay = (
+        <NewBookSearch
+          dispatch={this.props.dispatch}
+          showSearch={this.toggleSearch}
+        />
+      );
+    } else {
+      searchDisplay = <h6 onClick={this.toggleSearch}>Back to Search</h6>;
+    }
+
     if (this.props.newBook.title === "") {
       actionButtons = "";
     } else {
       actionButtons = (
         <div className="action-buttons">
-          <button type="button" onClick={this.addNugget}>
+          <a type="button" onClick={this.addNugget}>
             Add Nugget
-          </button>
+          </a>
           <input type="submit" value="Submit" />
         </div>
       );
@@ -135,7 +154,7 @@ export class NewBookFormContainer extends Component {
               placeholder="page"
               value={nuggets[i].fromPage}
               //onChange={e => this.updateFromPageState(e)}
-              type="text"
+              type="number"
               id={nuggetId}
               title="from"
               name={i}
@@ -145,7 +164,7 @@ export class NewBookFormContainer extends Component {
             <input
               placeholder="page"
               value={nuggets[i].toPage}
-              type="text"
+              type="number"
               id={nuggetId}
               name={i}
               className="toPage"
@@ -165,13 +184,13 @@ export class NewBookFormContainer extends Component {
     }
     return (
       <div className="new-book-form-container">
+        <NewBookForm onSubmit={e => this.handleSubmit(e)} {...this.props} />
         <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
           {nuggetInputsDisplay}
 
           {actionButtons}
         </form>
-        <NewBookForm onSubmit={e => this.handleSubmit(e)} {...this.props} />
-        <NewBookSearch dispatch={this.props.dispatch} />
+        {searchDisplay}
       </div>
     );
   }
