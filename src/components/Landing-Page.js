@@ -17,7 +17,7 @@ export class LandingPage extends Component {
 
     return (
       <div className="container landing-container">
-        <h1>Welcome to Espresso Reads</h1>
+        <h3>Welcome </h3>
         <div className="login-container container">
           <LoginForm />
           <button onClick={this.handleSubmit}>Create an Account</button>

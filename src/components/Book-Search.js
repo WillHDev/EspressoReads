@@ -105,6 +105,13 @@ export default class NewBookSearch extends Component {
     //this.setState({ Notes: event.target.value });
   }
   render() {
+    {
+      /* <ToggleButton
+              text={["Show Description", "Hide Description"]}
+              onClick={id => this.expandDescription(id)}
+            />
+            {this.state.expandDescription.id ? <p>{description}</p> : ""} */
+    }
     let showBooks, showSearchInput, showToggleButton, descriptionButton;
     //const { showSearch } = this.props;
     if (this.state.booksToDisplay) {
@@ -134,16 +141,8 @@ export default class NewBookSearch extends Component {
               this.selectBook(id);
             }}
           >
-            <div>{title}</div>
-            <div>{authors}</div>
-            <div>{categories}</div>
-
-            <ToggleButton
-              text={["Show Description", "Hide Description"]}
-              onClick={id => this.expandDescription(id)}
-            />
-            {this.state.expandDescription.id ? <p>{description}</p> : ""}
-
+            <div className="book-search-title">{title}</div>
+            <div className="book-search-author">by {authors}</div>
             <a>
               {" "}
               <div
@@ -156,6 +155,15 @@ export default class NewBookSearch extends Component {
                 }}
               />
             </a>
+
+            <Toggle>
+              {({ on, toggle }) => (
+                <Fragment>
+                  <button onClick={toggle}>Description</button>
+                  {on && <div>{description}</div>}
+                </Fragment>
+              )}
+            </Toggle>
           </div>
         );
       });

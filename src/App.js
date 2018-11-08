@@ -68,9 +68,6 @@ class App extends Component {
     //  {homeButton}
     return (
       <div className="App">
-        <a className="logout-button" onClick={this.logOut}>
-          Logout
-        </a>
         <h1 className="nuclei">Espresso Reads</h1>
         <img src={coffeewhite} className="logo" alt="logo" />
 

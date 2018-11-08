@@ -8,6 +8,8 @@ import LandingPage from "./Landing-Page";
 import Dashboard from "./Dashboard";
 import RegistrationPage from "./Registration-Page";
 import NewBookForm from "./New-Book-Container";
+import "../styles/GetStarted.css";
+
 class GetStarted extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +35,9 @@ class GetStarted extends Component {
       goToLogin: true
     });
   };
+  goToRegistration = () => {
+    this.props.history.push("/registration");
+  };
 
   render() {
     if (this.state.goToLogin === true) {
@@ -40,13 +45,15 @@ class GetStarted extends Component {
     }
     return (
       <div className="App">
+        <p className="App-link" onClick={() => this.goToLogin()}>
+          Login
+        </p>
         <header className="App-header">
-          <p className="about">Espresso Reads: </p>
-          <p className="about">Insight Distilled </p>
+          <p className="Insight about">Insight Distilled </p>
           <br />
           <br />
-          <p className="App-link" onClick={() => this.goToLogin()}>
-            Get Started
+          <p className="App-link" onClick={() => this.goToRegistration()}>
+            Create an Account
           </p>
         </header>
       </div>

@@ -13,32 +13,37 @@ export class HeaderBar extends Component {
   openForm = () => {
     this.props.history.push("/newbook");
   };
-  searchBooks = e => {
-    // this.setState({
-    //   searchTerm: e.target.value
-    // });
+
+  logOut = () => {
+    localStorage.removeItem("authToken");
+    this.props.dispatch(changeCurrentUser(null));
   };
   render() {
     return (
-      <div className="nav-bar">
-        <div className="wrapper">
-          <div className="top-bar">
-            <div className="second-bar">
-              <nav className="main-nav">
-                <a className="almanac">
-                  <input
-                    type="text"
-                    id="search"
-                    placeholder="Search"
-                    onChange={this.props.searchFilter}
-                  />
-                  <br />
-                </a>
+      <div>
+        <a className="logout-button" onClick={this.logOut}>
+          Logout
+        </a>
+        <div className="nav-bar">
+          <div className="wrapper">
+            <div className="top-bar">
+              <div className="second-bar">
+                <nav className="main-nav">
+                  <a className="almanac">
+                    <input
+                      type="text"
+                      id="search"
+                      placeholder="Search"
+                      onChange={this.props.searchFilter}
+                    />
+                    <br />
+                  </a>
 
-                <a className="almanac" onClick={this.openForm}>
-                  New
-                </a>
-              </nav>
+                  <a className="almanac" onClick={this.openForm}>
+                    New
+                  </a>
+                </nav>
+              </div>
             </div>
           </div>
         </div>

@@ -32,6 +32,7 @@ export class Dashboard extends Component {
     const caseInsensitive = e.target.value.toUpperCase();
     this.setState({ searchTerm: caseInsensitive });
   };
+
   render() {
     let display;
 

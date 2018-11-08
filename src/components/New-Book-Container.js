@@ -6,11 +6,15 @@ import HeaderBar from "./Header-Bar";
 import { FaDivide } from "react-icons/fa";
 
 export class NewBookContainer extends Component {
+  backToBooklist = () => {
+    this.props.history.push("/dashboard");
+  };
   render() {
     if (this.props.loggedIn) {
       return (
         <div className="new-book-container">
           <HeaderBar />
+          <a onClick={() => this.backToBooklist()}>Back</a>
           <h2>New Entry</h2>
           <NewBookFormContainer />
         </div>

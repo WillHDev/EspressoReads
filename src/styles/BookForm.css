@@ -8,3 +8,10 @@
   font-size: 22px;
   float: right;
 }
+.book-search-title {
+  font-size: 20px;
+}
+
+.book-search-author {
+  font-size: 8px;
+}
