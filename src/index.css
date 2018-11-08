@@ -1,13 +1,6 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-  monospace;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  padding: 3rem;
 }
 
 code {
@@ -15,11 +8,10 @@ code {
     monospace;
 }
 
-
 .book-image {
-  margin:auto;
-  height:170px;
-  width:120px;
+  margin: auto;
+  height: 170px;
+  width: 120px;
   box-sizing: border-box;
 }
 
@@ -28,7 +20,7 @@ ul {
 }
 
 .about {
-  font-size:calc(10px + 1vmin);
+  font-size: calc(10px + 1vmin);
 }
 
 /*General Styling
@@ -63,7 +55,7 @@ a {
 } */
 
 .top-bar::after {
-  content: '';
+  content: "";
   display: block;
   background: #494949;
   height: 5px;
@@ -82,12 +74,12 @@ a {
   background: #343434;
 }
 
-.main-nav>a:first-child {
-  border-bottom-left-radius: 3px
+.main-nav > a:first-child {
+  border-bottom-left-radius: 3px;
 }
 
-.main-nav>a:last-child {
-  border-bottom-right-radius: 3px
+.main-nav > a:last-child {
+  border-bottom-right-radius: 3px;
 }
 
 nav a {
@@ -99,17 +91,17 @@ nav a {
 
 a.home:hover,
 a.home:active {
-  background: #A62A2A;
+  background: #a62a2a;
 }
 
 a.videos:hover,
 a.videos:before {
-  background: #FF2400;
+  background: #ff2400;
 }
 
 a.almanac:hover,
 a.almanac:before {
-  background: #7F00FF;
+  background: #7f00ff;
 }
 
 a.snippets:hover,
@@ -119,13 +111,13 @@ a.snippets:before {
 
 a.forums:hover,
 a.forums:before {
-  background: #238E23;
+  background: #238e23;
 }
 /*Content
 ====================*/
 
 .content-wrapper {
-  background: #C0D9D9;
+  background: #c0d9d9;
   width: 100%;
   display: inline-block;
   height: 1000px;
@@ -155,27 +147,18 @@ a.forums:before {
   color: #1822a5;
 }
 
-/* .author {
-  font-size: 1.3em;
-  color: grey;
-}
-
-.author a {
-  color: grey;
-}
-
-.author a:hover {
-  color: black; 
-}
-*/
-
-/*First child not working, but this does? Check later */
-
-.content>p:nth-child(2) {
+.content > p:nth-child(2) {
   text-indent: 2em;
 }
 
 .nuclei {
   box-sizing: inline-block;
   width: 100%;
+}
+
+.book-search-grid {
+}
+
+.new-book-search-container {
+  display: flex;
 }

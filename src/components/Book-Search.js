@@ -145,9 +145,9 @@ export default class NewBookSearch extends Component {
         }
 
         return (
-          <li
+          <div
             key={id}
-            className="book-listing"
+            className="book-card"
             onDoubleClick={() => this.selectBook(id)}
           >
             <div>{title}</div>
@@ -159,12 +159,7 @@ export default class NewBookSearch extends Component {
               onClick={id => this.expandDescription(id)}
             />
             {this.state.expandDescription.id ? <p>{description}</p> : ""}
-            <div>
-              <a href={infoLink}> {thumbnail} </a>
-            </div>
-            <div>
-              <a href={previewLink}>Preview</a>
-            </div>
+
             <a>
               {" "}
               <div
@@ -177,7 +172,7 @@ export default class NewBookSearch extends Component {
                 }}
               />
             </a>
-          </li>
+          </div>
         );
       });
     }
@@ -196,27 +191,19 @@ export default class NewBookSearch extends Component {
           <button id="button" type="button" onClick={this.showSearchInput}>
             Search
           </button>
-          <div id="results">
-            <ul>{showBooks}</ul>
-          </div>
+          <div id="grid book-search-grid">{showBooks}</div>
         </form>
       );
     }
-    // <button onClick={toggle}>Login</button>
     let noResultsFound, showModal;
     if (!this.state.booksToDisplay && this.state.searchTerm !== null) {
       noResultsFound = true;
     } else {
       noResultsFound = false;
     }
-    // if (noResultsFound) {
-    //   showModal = <a onload={toggle} />;
-    // } else {
-    //   showModal = <a />;
-    // }
-    //   {{noResultsFound} ? (<p onload={toggle}></p>) : (<p></p>)}
+
     return (
-      <div className="new-book-search-container">
+      <div className="new-book-search-container grid">
         <div className="parent">
           <h2>Find a Book</h2>
 

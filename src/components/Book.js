@@ -5,7 +5,7 @@ import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { FaArrowCircleUp } from "react-icons/fa";
 import { changeVote } from "../actions/Votes";
 import { connect } from "react-redux";
-
+import "../styles/Book.css";
 import { withRouter } from "react-router-dom";
 import AddComment from "./Add-Comment";
 import { Nuggets } from "./Nuggets";
@@ -46,18 +46,23 @@ export class Book extends React.Component {
     }
 
     return (
-      <div className="book">
-        <h4>{title}</h4>
-        <h6>{subtitle}</h6>
-        <h6>{author}</h6>
+      <div className="book-card">
+        <div className="info">
+          {" "}
+          <h4>{title}</h4>
+          <h6>{author}</h6>
+          {toggleInfo}
+        </div>
+
         {votes}
-        <span onClick={e => this.upVote(e)} ref="btn" id={id}>
-          <FaThumbsUp id={id} />
-        </span>
-        <span onClick={e => this.downVote(e)} ref="btn" id={id}>
-          <FaThumbsDown id={id} />
-        </span>
-        {toggleInfo}
+        <div className="votes">
+          <span onClick={e => this.upVote(e)} ref="btn" id={id}>
+            <FaThumbsUp id={id} />
+          </span>
+          <span onClick={e => this.downVote(e)} ref="btn" id={id}>
+            <FaThumbsDown id={id} />
+          </span>
+        </div>
 
         <img
           className="book-image"

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
+
 import "./App.css";
 import { connect } from "react-redux";
 import { fetchProtectedData } from "./actions/Protected-Data";
@@ -50,7 +51,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src="/src/images/coffee4.png" className="App-logo" alt="logo" />
         <p>
           <button onClick={this.backToDashboard}> Nucleus </button>
         </p>

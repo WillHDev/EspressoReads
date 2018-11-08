@@ -3,6 +3,7 @@ import Book from "./Book";
 import { fetchSharedBooks } from "../actions/Shared-Books";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import "../styles/Booklist.css";
 
 export class BookList extends React.Component {
   componentDidMount() {
@@ -32,7 +33,7 @@ export class BookList extends React.Component {
       });
 
       return (
-        <div>
+        <div className="grid">
           {orderedBooks.map((book, i) => (
             <Book
               key={i}
