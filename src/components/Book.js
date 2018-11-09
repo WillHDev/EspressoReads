@@ -73,7 +73,7 @@ export class Book extends React.Component {
       <div className="">
         <div className="info">
           {" "}
-          <h4>{title}</h4>
+          <h4 className="single-book-title">{title}</h4>
           <h6>{author}</h6>
           {toggleInfo}
         </div>

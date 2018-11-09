@@ -21,3 +21,49 @@
   border-width: 2px;
   background: black;
 }
+
+.book-card-search {
+  box-sizing: border-box;
+
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 1px 2px 40px 2px rgba(160, 160, 160, 0.5);
+}
+.small-dots {
+  font-size: 10px;
+}
+.book-search-grid {
+  margin: 0 auto;
+  width: 30%;
+  display: block !important;
+}
+.new-book-search-container {
+  width: 30%;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 75.3em) {
+  .new-book-search-container {
+    width: 30%;
+    box-sizing: border-box;
+  }
+}
+
+@media not all and (min-width: 765px) {
+  .new-book-search-container {
+    /*css for small screens goes here*/
+    box-sizing: border-box;
+  }
+}
+/*
+@media only screen and (min-width: 48em) {
+  .book-card {
+    flex-basis: calc((100% / 3) - 2rem);
+  }
+}
+
+@media only screen and (min-width: 60em) {
+  .book-card {
+    flex-basis: calc((100% / 4) - 2rem);
+  }
+} */

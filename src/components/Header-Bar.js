@@ -18,7 +18,24 @@ export class HeaderBar extends Component {
     localStorage.removeItem("authToken");
     this.props.dispatch(changeCurrentUser(null));
   };
+
   render() {
+    console.log("History", this.props.history, this.props.location);
+    let searchBar;
+    console.log("this.props.history.pathname", this.props.location.pathname);
+    if (this.props.location.pathname === "/dashboard") {
+      searchBar = (
+        <a className="almanac">
+          <input
+            type="text"
+            id="search"
+            placeholder="Search"
+            onChange={this.props.searchFilter}
+          />
+          <br />
+        </a>
+      );
+    }
     return (
       <div>
         <a className="logout-button" onClick={this.logOut}>
@@ -29,19 +46,10 @@ export class HeaderBar extends Component {
             <div className="top-bar">
               <div className="second-bar">
                 <nav className="main-nav">
-                  <a className="almanac">
-                    <input
-                      type="text"
-                      id="search"
-                      placeholder="Search"
-                      onChange={this.props.searchFilter}
-                    />
-                    <br />
-                  </a>
-
                   <a className="almanac" onClick={this.openForm}>
                     New
                   </a>
+                  {searchBar}
                 </nav>
               </div>
             </div>

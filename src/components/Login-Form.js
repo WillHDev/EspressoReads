@@ -18,7 +18,13 @@ export class LoginForm extends React.Component {
       login(values[this.usernameId], values[this.passwordId])
     );
   }
-  //this.props.handleSubmit(
+
+  demoLogin = () => {
+    document.getElementById(this.usernameId).value = "gatsby";
+    document.getElementById(this.passwordId).value = "password12";
+    this.props.dispatch(login("gatsby", "password12"));
+  };
+
   render() {
     let error;
     if (this.props.error) {
@@ -61,6 +67,8 @@ export class LoginForm extends React.Component {
           <button disabled={this.props.pristine || this.props.submitting}>
             Log in
           </button>
+          <br />
+          <br />
         </div>
       </form>
     );

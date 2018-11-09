@@ -105,6 +105,7 @@ export default class NewBookSearch extends Component {
     console.log("hit updateNote", event.target.value);
     //this.setState({ Notes: event.target.value });
   }
+
   render() {
     {
       /* <ToggleButton
@@ -113,37 +114,51 @@ export default class NewBookSearch extends Component {
             />
             {this.state.expandDescription.id ? <p>{description}</p> : ""} */
     }
-    let showBooks, showSearchInput, showToggleButton, descriptionButton;
+    let showBooks,
+      showSearchInput,
+      showToggleButton,
+      descriptionButton,
+      authorInfo;
     //const { showSearch } = this.props;
     if (this.state.booksToDisplay) {
+      console.log("this.state.booksToDisplay", this.state.booksToDisplay);
       showBooks = this.state.booksToDisplay.map(item => {
         const { id } = item;
 
-        const {
-          title,
-          authors,
-          categories,
-          description,
-          infoLink,
-          previewLink
-        } = item.volumeInfo;
+        const { title, authors, description } = item.volumeInfo;
         let thumbnail;
         if (!item.volumeInfo.imageLinks) {
           thumbnail = "";
         } else {
           thumbnail = item.volumeInfo.imageLinks.thumbnail;
         }
-
+        if (authors) {
+          console.log("authors", authors);
+          authorInfo = <div className="book-search-author">by {authors}</div>;
+        }
+        let abbrevTitle;
+        abbrevTitle = title;
+        if (title.length > 60) {
+          console.log("title", title);
+          abbrevTitle = (
+            <div>
+              {" "}
+              <span> {abbrevTitle.slice(0, 60)} </span>{" "}
+              <span className="small-dots">...</span>{" "}
+            </div>
+          );
+          console.log(" abbrevTitle ", abbrevTitle);
+        }
         return (
           <div
             key={id}
-            className="book-card"
+            className="book-card-search"
             onDoubleClick={() => {
               this.selectBook(id);
             }}
           >
-            <div className="book-search-title">{title}</div>
-            <div className="book-search-author">by {authors}</div>
+            <div className="book-search-title">{abbrevTitle}</div>
+            {authorInfo}
             <a>
               {" "}
               <div
@@ -189,7 +204,7 @@ export default class NewBookSearch extends Component {
           <button id="button" type="button" onClick={this.showSearchInput}>
             Search
           </button>
-          <div id="grid book-search-grid">{showBooks}</div>
+          <div id=" book-search-grid">{showBooks}</div>
         </form>
       );
     }

@@ -29,13 +29,14 @@ ul {
 * {
   box-sizing: border-box;
 }
+/*
 @media not all and (min-width: 765px) {
   * {
-    /*css for small screens goes here*/
+  
     box-sizing: content-box;
   }
 }
-
+*/
 body {
   background-color: #131313;
   color: white;
@@ -59,13 +60,6 @@ a {
   margin-left: 25px;
   color: white;
 } */
-
-.book-search-grid {
-}
-
-.new-book-search-container {
-  display: flex;
-}
 
 .float-right {
   float: right;

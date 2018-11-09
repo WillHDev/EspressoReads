@@ -1,3 +1,6 @@
 .single-book {
   box-sizing: border-box;
 }
+.single-book-title {
+  font-size: 30px;
+}

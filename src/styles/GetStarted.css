@@ -1,3 +1,13 @@
 .Insight {
   margin-top: -200px;
 }
+
+.accounts {
+  display: inherit;
+}
+
+.account {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 15px;
+}
