@@ -48,6 +48,7 @@ class GetStarted extends Component {
     } else if (this.props.loggedIn === true) {
       this.props.history.push("/dashboard");
     }
+    //
     return (
       <div className="App">
         <header className="App-header">
