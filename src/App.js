@@ -68,7 +68,9 @@ class App extends Component {
     //  {homeButton}
     return (
       <div className="App">
-        <h1 className="nuclei">Espresso Reads</h1>
+        <h1 className="nuclei">
+          <span className="big-e">E</span>spresso Reads
+        </h1>
         <img src={coffeewhite} className="logo" alt="logo" />
 
         <div>
