@@ -23,7 +23,7 @@ export class Book extends React.Component {
     voteAction.voteAction = "down";
     this.props.dispatch(changeVote(bookId, voteAction));
   };
-
+  //
   render() {
     const { book } = this.props;
     const {
