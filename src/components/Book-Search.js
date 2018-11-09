@@ -101,25 +101,19 @@ export default class NewBookSearch extends Component {
     this.expandDescription[id] = false;
   }
 
-  updateNote(event) {
-    console.log("hit updateNote", event.target.value);
-    //this.setState({ Notes: event.target.value });
-  }
+  //   updateNote(event) {
+  //     console.log("hit updateNote", event.target.value);
+  //     //this.setState({ Notes: event.target.value });
+  //   }
+  //   <ToggleInput
+  //   text={["Add a Note", "Add"]}
+  //   method={this.submitNote}
+  //   onChange={e => this.updateNote(e)}
+  // />
 
   render() {
-    {
-      /* <ToggleButton
-              text={["Show Description", "Hide Description"]}
-              onClick={id => this.expandDescription(id)}
-            />
-            {this.state.expandDescription.id ? <p>{description}</p> : ""} */
-    }
-    let showBooks,
-      showSearchInput,
-      showToggleButton,
-      descriptionButton,
-      authorInfo;
-    //const { showSearch } = this.props;
+    let showBooks, showSearchInput, showToggleButton, authorInfo;
+
     if (this.state.booksToDisplay) {
       console.log("this.state.booksToDisplay", this.state.booksToDisplay);
       showBooks = this.state.booksToDisplay.map(item => {
@@ -228,11 +222,6 @@ export default class NewBookSearch extends Component {
             )}
           </Fragment>
 
-          <ToggleInput
-            text={["Add a Note", "Add"]}
-            method={this.submitNote}
-            onChange={e => this.updateNote(e)}
-          />
           <div>
             {showToggleButton}
             {showSearchInput}

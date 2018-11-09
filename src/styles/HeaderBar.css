@@ -107,6 +107,7 @@ a.forums:before {
 }
 
 .nuclei {
+  font-size: 80px;
   box-sizing: inline-block;
   width: 100%;
   text-shadow: 2px 2px rgba(160, 160, 160, 0.5);
