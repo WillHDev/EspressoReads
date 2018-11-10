@@ -210,7 +210,7 @@ export default class NewBookSearch extends Component {
     }
 
     return (
-      <div className="new-book-search-container grid">
+      <div className="new-book-search-container ">
         <div className="parent">
           <h2>Find a Book</h2>
 
