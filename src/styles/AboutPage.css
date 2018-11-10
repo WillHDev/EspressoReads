@@ -24,3 +24,11 @@
 .about-page {
   width: 100%;
 }
+
+.creating-new-entry {
+  font-size: 40px;
+}
+.instruction {
+  float: left;
+  font-size: 20px;
+}
