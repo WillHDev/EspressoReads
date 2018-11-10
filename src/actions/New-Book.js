@@ -70,6 +70,7 @@ export const postNewBook = (bookData, nuggets) => dispatch => {
       history.push(`/book/${book.id}`);
     })
     .then(() => {
+      dispatch(resetNewBookState());
       dispatch(postNewBookSuccess());
       return Promise.resolve();
     })
