@@ -38,9 +38,6 @@ export class HeaderBar extends Component {
     }
     return (
       <div>
-        <a className="logout-button" onClick={this.logOut}>
-          Logout
-        </a>
         <div className="nav-bar">
           <div className="wrapper">
             <div className="top-bar">

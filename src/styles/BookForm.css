@@ -55,6 +55,11 @@
     box-sizing: border-box;
   }
 }
+.new-entry {
+  font-size: 40px;
+}
+.book-search-box {
+}
 /*
 @media only screen and (min-width: 48em) {
   .book-card {

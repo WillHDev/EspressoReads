@@ -14,9 +14,12 @@ export class NewBookContainer extends Component {
       return (
         <div className="new-book-container">
           <HeaderBar />
+
           <a onClick={() => this.backToBooklist()}>Back</a>
-          <h2>New Entry</h2>
-          <NewBookFormContainer />
+          <div className="book-search-box-upper">
+            <h2 className="new-entry">New Entry</h2>
+            <NewBookFormContainer />
+          </div>
         </div>
       );
     } else {
