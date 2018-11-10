@@ -139,7 +139,9 @@ export class NewBookFormContainer extends Component {
           <a type="button" onClick={this.addNugget}>
             Add Nugget
           </a>
-          <input type="submit" value="Submit" />
+          <br />
+          <br />
+          <input className="nugget-submit" type="submit" value="Submit" />
         </div>
       );
     }

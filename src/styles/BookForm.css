@@ -3,7 +3,10 @@
   padding: 0px;
   margin: 30px;
 }
-
+.nugget-submit {
+  display: inherit;
+  margin: auto;
+}
 .back-to-search-button {
   font-size: 22px;
   float: right;

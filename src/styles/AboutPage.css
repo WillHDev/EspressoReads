@@ -1,0 +1,26 @@
+.flex {
+  flex-wrap: wrap;
+}
+.flex .image-container {
+  flex: 1;
+  margin: 5px; /* need some space ?*/
+}
+.about-image {
+  width: 75%;
+}
+
+.image-two {
+  width: auto; /*or your image's width*/
+
+  height: 300px;
+  margin: 0;
+  padding: 0;
+}
+
+.image-container {
+  width: 100%;
+}
+
+.about-page {
+  width: 100%;
+}

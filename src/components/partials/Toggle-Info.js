@@ -16,7 +16,7 @@ class ToggleInfoButton extends React.Component {
         <div>
           <div onClick={this.toggleInfo}>
             {" "}
-            <FaArrowCircleDown />{" "}
+            <p>Description </p>
           </div>
         </div>
       );
@@ -25,7 +25,7 @@ class ToggleInfoButton extends React.Component {
         <div>
           <div onClick={this.toggleInfo}>
             {" "}
-            <FaArrowCircleUp />{" "}
+            <p>Hide Description</p>
           </div>
           <div>
             <p>{this.props.info}</p>

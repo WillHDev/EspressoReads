@@ -16,6 +16,7 @@ import NewBookContainer from "./components/New-Book-Container";
 import BookPage from "./components/Book-Page";
 import GetStarted from "./components/Get-Started";
 import { fetchSharedBooks } from "./actions/Shared-Books";
+import AboutPage from "./components/AboutPage";
 
 class App extends Component {
   constructor(props) {
@@ -47,6 +48,10 @@ class App extends Component {
     localStorage.removeItem("authToken");
     this.props.dispatch(changeCurrentUser(null));
   };
+
+  aboutPage = () => {
+    this.props.history.push("/aboutPage");
+  };
   backToDashboard = () => {
     return this.props.history.push("/dashboard");
   };
@@ -69,6 +74,9 @@ class App extends Component {
     //
     return (
       <div className="App">
+        <a className="logout-button" onClick={this.aboutPage}>
+          About
+        </a>
         <a className="logout-button" onClick={this.logOut}>
           Logout
         </a>
@@ -84,6 +92,7 @@ class App extends Component {
           <Route exact path="/registration" component={RegistrationPage} />
           <Route exact path="/newbook" component={NewBookContainer} />
           <Route path="/book/:id" component={BookPage} />
+          <Route exact path="/aboutPage" component={AboutPage} />
         </div>
       </div>
     );

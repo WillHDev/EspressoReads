@@ -51,7 +51,7 @@ export class AddComment extends React.Component {
     //   <label>
     console.log("rednered add comment");
     return (
-      <div>
+      <div className="add-comment-container">
         <Comment comments={this.props.viewBook.book.comments} />
         <form onSubmit={this.handleSubmit}>
           <label>

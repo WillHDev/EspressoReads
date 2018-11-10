@@ -3,6 +3,7 @@ import ToggleInfo from "./partials/Toggle-Info";
 import Toggle from "./partials/Toggle";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { FaArrowCircleUp } from "react-icons/fa";
+import { MdClose } from "react-icons/md";
 import { changeVote } from "../actions/Votes";
 import { connect } from "react-redux";
 import "../styles/Book.css";
@@ -71,6 +72,8 @@ export class Book extends React.Component {
     }
     return (
       <div className="">
+        <br />
+        <br />
         <div className="info">
           {" "}
           <h4 className="single-book-title">{title}</h4>
@@ -92,9 +95,10 @@ export class Book extends React.Component {
               {!on && <a onClick={toggle}>Comments</a>}
               {on && (
                 <div>
-                  <FaArrowCircleUp onClick={toggle} />
-
                   <AddComment book={this.props.book} />
+                  <span>
+                    <MdClose onClick={toggle} />
+                  </span>
                 </div>
               )}
             </div>
