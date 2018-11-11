@@ -83,6 +83,12 @@ container {
   zoom: 0.5;
   margin: 1px;
 }
+.logo-get-started {
+  float: none;
+  transform: rotate(20deg);
+  zoom: 0.5;
+  margin: 1px;
+}
 /* .logo-get-started {
   float: none;
 } */

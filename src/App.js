@@ -50,6 +50,7 @@ class App extends Component {
   };
 
   aboutPage = () => {
+    console.log("Hit");
     this.props.history.push("/aboutPage");
   };
   backToDashboard = () => {
@@ -70,12 +71,8 @@ class App extends Component {
       );
     }
 
-    logoBox = (
-      <div className="logo-box-get-started">
-        <img src={coffeewhite} className="logo-get-started" alt="logo" />
-      </div>
-    );
-    if (this.props.location.pathname !== "/") {
+    logoBox = <img src={coffeewhite} className="logo-get-started" alt="logo" />;
+    if (this.props.location.pathname !== "/" && this.props.loggedIn) {
       logoutButton = (
         <a className="logout-button" onClick={this.logOut}>
           Logout
