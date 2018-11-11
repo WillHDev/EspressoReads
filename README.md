@@ -37,10 +37,12 @@ and less time finding the most worthwhile parts of a nonfiction book.
 
 Backend Repo: https://github.com/WillHDev/EspressoReads-Server
 
+##
+
 
 Tech Stack:
 
-##
+
 
 Frontend:
 React Redux Redux-Form React-Router React-Spring React-Icons Jest 
