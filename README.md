@@ -1,4 +1,4 @@
-Espresso Reads
+Espresso Reads:
 
 Your Book Store Companion
 
