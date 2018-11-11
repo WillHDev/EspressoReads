@@ -25,7 +25,7 @@ Live App: https://silly-noether-09bfca.netlify.com
 ##
 
 
-##Summary:
+Summary:
 
 Espresso Reads is an app designed to help you quickly navigate to the high points in the nonfiction landscape.   It’s like Yelp for book passages.  
 
@@ -38,7 +38,9 @@ and less time finding the most worthwhile parts of a nonfiction book.
 Backend Repo: https://github.com/WillHDev/EspressoReads-Server
 
 
-##Tech Stack:
+Tech Stack:
+
+##
 
 Frontend:
 React Redux Redux-Form React-Router React-Spring React-Icons Jest 
