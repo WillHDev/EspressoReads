@@ -41,13 +41,18 @@
   display: block !important;
 }
 .new-book-search-container {
-  width: 30%;
+  width: 100%;
   margin: 0 auto;
 }
+/* @media only screen and (min-width: 33.75em) {
+  .new-book-search-container {
+    width: 100%;
+  }
+} */
 
 @media only screen and (min-width: 75.3em) {
   .new-book-search-container {
-    width: 30%;
+    width: 100%;
     box-sizing: border-box;
   }
 }

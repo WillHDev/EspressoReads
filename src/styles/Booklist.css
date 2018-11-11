@@ -67,7 +67,6 @@ body {
   grid-template-rows: repeat(3, 100px);
   grid-gap: 2em;
 }
-
 header,
 aside,
 article,
@@ -75,19 +74,16 @@ footer {
   background: #eaeaea;
   padding: 1em;
 }
-
 header,
 footer {
   grid-column: 1 / 4;
 }
-
 /* Demo Specific Styles */
 /* body {
   margin: 0 auto;
   max-width: 56em;
   padding: 1em 0;
 }
-
 .grid > * {
   align-items: center;
   justify-content: center;

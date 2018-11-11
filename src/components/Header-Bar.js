@@ -47,6 +47,7 @@ export class HeaderBar extends Component {
                   <a className="almanac almanac-new" onClick={this.openForm}>
                     New
                   </a>
+
                   {searchBar}
                 </nav>
               </div>

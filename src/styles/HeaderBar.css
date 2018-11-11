@@ -15,9 +15,11 @@
 .almanac {
   height: 50px;
   min-width: 180px;
+  flex: 1;
 }
 
 .main-nav a {
+  float: left;
   width: 20%;
   background: #343434;
 }
@@ -106,20 +108,21 @@ a.forums:before {
 }
 
 .nuclei {
-  font-size: 30px;
-  margin: 40px;
+  font-size: 60px;
   box-sizing: inline-block;
   width: 100%;
   text-shadow: 2px 2px rgba(160, 160, 160, 0.5);
 }
 
-.search-bar-main {
-  background-color: darkgray;
-}
-/* .almanac-left {
-  float: right;
+@media only screen and (min-width: 33.75em) {
+  .nuclei {
+    font-size: 40px;
+  }
 }
 
-.almanac-new {
-  float: left;
-} */
+@media not all and (min-width: 765px) {
+  .almanac {
+    /*css for small screens goes here*/
+    height: 20px;
+  }
+}

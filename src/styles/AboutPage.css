@@ -10,9 +10,6 @@
 }
 
 .image-two {
-  width: auto; /*or your image's width*/
-
-  height: 300px;
   margin: 0;
   padding: 0;
 }

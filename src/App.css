@@ -3,13 +3,10 @@
 }
 
 .logo {
-  display: block !important;
-  width: auto;
-  margin: 0 auto;
   transform: rotate(20deg);
   height: 100px;
   text-shadow: 2px 2px rgba(160, 160, 160, 0.5);
-
+  height: 200px;
   margin-bottom: 40px;
 }
 /* .big-e {
@@ -28,6 +25,15 @@
 
 .App-link {
   color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 container {
@@ -60,8 +66,4 @@ container {
   display: block;
   float: right;
   font-size: 10px;
-}
-
-.about-next {
-  float: left;
 }
