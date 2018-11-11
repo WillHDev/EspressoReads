@@ -12,20 +12,18 @@ export class AboutPage extends Component {
   render() {
     return (
       <div className="about-page">
-        <a className="back-from-about-page" onClick={this.backToBooklist}>
-          Back
-        </a>
+        <br />
         <h3 className="creating-new-entry">Creating a New Entry</h3>
         <div className="flex">
           <div className="instruction">
-            <p>Click New</p>
+            <p>Click 'New'</p>
           </div>
-          <br />
+
           <div className="image-container">
             <img className="about-image image-two" src="/images/bookGrid.png" />
           </div>
           <div className="instruction">
-            <p>Search by Book or Author</p>
+            <p>Search by book or author</p>
           </div>
           <div className="image-container">
             <img
@@ -35,7 +33,7 @@ export class AboutPage extends Component {
           </div>
 
           <div className="instruction">
-            <p>Double Tap/Click Your Book</p>
+            <p>Double tap/click your book</p>
           </div>
 
           <div>
@@ -45,7 +43,7 @@ export class AboutPage extends Component {
             />
           </div>
           <div className="instruction">
-            <p>Click Add Nugget</p>
+            <p>Click 'Add Nugget'</p>
           </div>
           <div className="image-container">
             <img
@@ -64,7 +62,7 @@ export class AboutPage extends Component {
           </div>
 
           <div className="instruction">
-            <p>Click Submit</p>
+            <p>Click 'Submit' to serve up your book espresso</p>
           </div>
           <div>
             <img

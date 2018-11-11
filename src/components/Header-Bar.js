@@ -18,11 +18,12 @@ export class HeaderBar extends Component {
     localStorage.removeItem("authToken");
     this.props.dispatch(changeCurrentUser(null));
   };
-
+  backToBooklist = () => {
+    this.props.history.push("/dashboard");
+  };
   render() {
-    console.log("History", this.props.history, this.props.location);
-    let searchBar;
-    console.log("this.props.history.pathname", this.props.location.pathname);
+    let searchBar, backButton;
+
     if (this.props.location.pathname === "/dashboard") {
       searchBar = (
         <a className="almanac almanac-left">
@@ -37,6 +38,17 @@ export class HeaderBar extends Component {
         </a>
       );
     }
+
+    if (this.props.location.pathname !== "/dashboard") {
+      backButton = (
+        <a
+          className="almanac almanac-new"
+          onClick={() => this.backToBooklist()}
+        >
+          Back
+        </a>
+      );
+    }
     return (
       <div>
         <div className="nav-bar">
@@ -47,8 +59,9 @@ export class HeaderBar extends Component {
                   <a className="almanac almanac-new" onClick={this.openForm}>
                     New
                   </a>
-
+                  {backButton}
                   {searchBar}
+                  <h1 className="nuclei">Espresso Reads</h1>
                 </nav>
               </div>
             </div>

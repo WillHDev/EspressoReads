@@ -23,10 +23,17 @@
 }
 
 .creating-new-entry {
-  font-size: 40px;
-  margin: 60px;
+  font-size: 30px;
+  /* margin: 60px; */
 }
 .instruction {
   float: left;
+  text-align: left;
   font-size: 20px;
+  color: #61dafb;
+}
+@media only screen and (max-width: 37.5rem) {
+  .instruction {
+    font-size: 15px;
+  }
 }

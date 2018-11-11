@@ -38,22 +38,22 @@ export class NewBookFormContainer extends Component {
     });
   };
 
-  submitNewEntry = () => {
-    const newEntry = {
-      userId: this.props.currentUser.id,
-      title: this.props.newBook.title,
-      subtitle: this.props.newBook.subtitle,
-      description: this.props.newBook.description,
-      authors: this.props.newBook.authors,
-      id: this.props.newBook.id,
-      Url: this.props.newBook.Url,
-      image: this.props.newBook.image
-    };
+  // submitNewEntry = () => {
+  //   const newEntry = {
+  //     userId: this.props.currentUser.id,
+  //     title: this.props.newBook.title,
+  //     subtitle: this.props.newBook.subtitle,
+  //     description: this.props.newBook.description,
+  //     authors: this.props.newBook.authors,
+  //     id: this.props.newBook.id,
+  //     Url: this.props.newBook.Url,
+  //     image: this.props.newBook.image
+  //   };
 
     // const nuggetsObject = {};
     // nuggetsObject.nuggets = this.state.nuggets;
     // this.props.dispatch(postNewBook(newEntry, nuggetsObject));
-  };
+  // };
   updateFromPageState(event) {
     const nuggetId = event.target.id;
     const inputValue = event.target.value;

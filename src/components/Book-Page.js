@@ -18,33 +18,21 @@ export class BookPage extends React.Component {
       book: null
     };
   }
-  // componentWillUnmount = () => {
-  //   this.props.dispatch(removeBookFromSingleView());
-  // };
+
   componentWillMount = () => {
     const bookId = this.props.match.params.id;
 
     this.props.dispatch(loadBookIntoSingleView(bookId));
   };
-  backToBooklist = () => {
-    this.props.history.push("/dashboard");
-  };
 
   render() {
-    //const { book } = this.props;
     const book = this.props.viewBook.book;
 
-    //let toggleInfo;
-    // if (this.props.description !== "") {
-    //   toggleInfo = <ToggleInfo info={this.props.description} />;
-    // }
-    //
     if ((this.props.viewBook.id = "")) {
       return <h2>Loading...</h2>;
     } else {
       return (
         <div className="book-page">
-          <a onClick={() => this.backToBooklist()}>Back</a>
           <HeaderBar />
           <div className="single-book">
             <Book singleView={book} book={book} />

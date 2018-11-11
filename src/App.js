@@ -57,6 +57,7 @@ class App extends Component {
   };
 
   render() {
+    let backButton;
     if (this.state.goToLogin === true) {
       return <Redirect to="/login" />;
     }
@@ -70,22 +71,31 @@ class App extends Component {
         </p>
       );
     }
-    //  {homeButton}
-    //
+
+    if (this.props.location.pathname === "/aboutPage") {
+      backButton = (
+        <a className="logout-button" onClick={this.backToDashboard}>
+          Back
+        </a>
+      );
+    }
     return (
       <div className="App">
-        <a className="logout-button" onClick={this.logOut}>
-          Logout
-        </a>
-        <a className="logout-button about-next" onClick={this.aboutPage}>
-          About
-        </a>
-
-        <h1 className="nuclei">
-          <span className="big-e">E</span>spresso Reads
-        </h1>
-        <img src={coffeewhite} className="logo" alt="logo" />
-
+        <header className="header-about-logout">
+          <a className="logout-button" onClick={this.logOut}>
+            Logout
+          </a>
+          <br />
+          <a className="logout-button about-next" onClick={this.aboutPage}>
+            About
+          </a>
+          <br />
+          {backButton}
+        </header>
+        <div className="logo-box">
+          <img src={coffeewhite} className="logo" alt="logo" />
+        </div>
+        <br />
         <div>
           <Route exact path="/" component={GetStarted} />
           <Route exact path="/login" component={LandingPage} />

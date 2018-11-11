@@ -6,17 +6,10 @@ import HeaderBar from "./Header-Bar";
 import { FaDivide } from "react-icons/fa";
 
 export class NewBookContainer extends Component {
-  backToBooklist = () => {
-    this.props.history.push("/dashboard");
-  };
-
-  //
-  //<a onClick={() => this.backToBooklist()}>Back</a>
   render() {
     if (this.props.loggedIn) {
       return (
         <div className="new-book-container">
-          <a onClick={this.backToBooklist}>Back</a>
           <HeaderBar />
 
           <div className="book-search-box-upper">
