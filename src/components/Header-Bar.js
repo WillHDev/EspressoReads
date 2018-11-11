@@ -25,8 +25,9 @@ export class HeaderBar extends Component {
     console.log("this.props.history.pathname", this.props.location.pathname);
     if (this.props.location.pathname === "/dashboard") {
       searchBar = (
-        <a className="almanac">
+        <a className="almanac almanac-left">
           <input
+            className="search-bar-main"
             type="text"
             id="search"
             placeholder="Search"
@@ -43,7 +44,7 @@ export class HeaderBar extends Component {
             <div className="top-bar">
               <div className="second-bar">
                 <nav className="main-nav">
-                  <a className="almanac" onClick={this.openForm}>
+                  <a className="almanac almanac-new" onClick={this.openForm}>
                     New
                   </a>
                   {searchBar}

@@ -18,7 +18,6 @@
 }
 
 .main-nav a {
-  float: left;
   width: 20%;
   background: #343434;
 }
@@ -114,9 +113,13 @@ a.forums:before {
   text-shadow: 2px 2px rgba(160, 160, 160, 0.5);
 }
 
-@media not all and (min-width: 765px) {
-  .almanac {
-    /*css for small screens goes here*/
-    height: 20px;
-  }
+.search-bar-main {
+  background-color: darkgray;
 }
+/* .almanac-left {
+  float: right;
+}
+
+.almanac-new {
+  float: left;
+} */

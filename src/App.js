@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import coffeewhite from "./images/coffeewhite.svg";
+import coffeewhite from "./components/elements/coffeewhite.svg";
 import "./App.css";
 import { connect } from "react-redux";
 import {
