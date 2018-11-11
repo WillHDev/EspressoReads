@@ -8,6 +8,8 @@ Live App: https://silly-noether-09bfca.netlify.com
 ![screen shot 2018-11-09 at 5 51 40 pm](https://user-images.githubusercontent.com/40006828/48293317-6f415480-e44c-11e8-8d95-6a50cfa4b48d.png)
 
 
+
+
 "I read many, many books, but with most books I read, I only read the first few pages because most books aren't very good."
 -Yuval Noah Harari, Author of Sapiens
 
@@ -17,6 +19,10 @@ Live App: https://silly-noether-09bfca.netlify.com
 “Books are built out of other books."
 
 -Tyler Cowen, Author of The Complacent Class
+
+
+
+
 
 Summary:
 
