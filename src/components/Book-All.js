@@ -87,7 +87,11 @@ export class BookAll extends React.Component {
         <Toggle>
           {({ on, toggle }) => (
             <div>
-              {!on && <a onClick={toggle}>Comments</a>}
+              {!on && (
+                <a className="description-toggle-book-all" onClick={toggle}>
+                  Comments
+                </a>
+              )}
               {on && (
                 <div>
                   <FaArrowCircleUp onClick={toggle} />

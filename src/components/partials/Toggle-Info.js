@@ -16,7 +16,7 @@ class ToggleInfoButton extends React.Component {
         <div>
           <div onClick={this.toggleInfo}>
             {" "}
-            <p>Description </p>
+            <p className="description-toggle-book-all">Description </p>
           </div>
         </div>
       );

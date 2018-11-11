@@ -52,6 +52,8 @@ class GetStarted extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <h1 className="nuclei-get-started">Espresso Reads</h1>
+          <br />
           <p className="Insight about">Strong Reads Brewed Daily</p>
           <br />
           <br />

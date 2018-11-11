@@ -57,19 +57,9 @@ class App extends Component {
   };
 
   render() {
-    let backButton;
+    let backButton, logoutButton, logoBox;
     if (this.state.goToLogin === true) {
       return <Redirect to="/login" />;
-    }
-    //"/src/images/coffee4.png"
-
-    let homeButton;
-    if (this.props.loggedIn) {
-      homeButton = (
-        <p>
-          <a onClick={this.backToDashboard}> Home </a>
-        </p>
-      );
     }
 
     if (this.props.location.pathname === "/aboutPage") {
@@ -79,12 +69,28 @@ class App extends Component {
         </a>
       );
     }
+
+    logoBox = (
+      <div className="logo-box-get-started">
+        <img src={coffeewhite} className="logo-get-started" alt="logo" />
+      </div>
+    );
+    if (this.props.location.pathname !== "/") {
+      logoutButton = (
+        <a className="logout-button" onClick={this.logOut}>
+          Logout
+        </a>
+      );
+      logoBox = (
+        <div className="logo-box">
+          <img src={coffeewhite} className="logo" alt="logo" />
+        </div>
+      );
+    }
     return (
       <div className="App">
         <header className="header-about-logout">
-          <a className="logout-button" onClick={this.logOut}>
-            Logout
-          </a>
+          {logoutButton}
           <br />
           <a className="logout-button about-next" onClick={this.aboutPage}>
             About
@@ -92,9 +98,7 @@ class App extends Component {
           <br />
           {backButton}
         </header>
-        <div className="logo-box">
-          <img src={coffeewhite} className="logo" alt="logo" />
-        </div>
+        {logoBox}
         <br />
         <div>
           <Route exact path="/" component={GetStarted} />
