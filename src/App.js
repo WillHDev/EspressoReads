@@ -18,6 +18,8 @@ import GetStarted from "./components/Get-Started";
 import { fetchSharedBooks } from "./actions/Shared-Books";
 import AboutPage from "./components/AboutPage";
 
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -87,13 +89,31 @@ class App extends Component {
         <img src={coffeewhite} className="logo" alt="logo" />
 
         <div>
-          <Route exact path="/" component={GetStarted} />
-          <Route exact path="/login" component={LandingPage} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/registration" component={RegistrationPage} />
-          <Route exact path="/newbook" component={NewBookContainer} />
-          <Route path="/book/:id" component={BookPage} />
-          <Route exact path="/aboutPage" component={AboutPage} />
+          <Route
+            render={({ location }) => (
+              <TransitionGroup>
+                <CSSTransition
+                  key={location.key}
+                  timeout={300}
+                  classNames="fade"
+                >
+                  <Switch location={location}>
+                    <Route exact path="/" component={GetStarted} />
+                    <Route exact path="/login" component={LandingPage} />
+                    <Route exact path="/dashboard" component={Dashboard} />
+                    <Route
+                      exact
+                      path="/registration"
+                      component={RegistrationPage}
+                    />
+                    <Route exact path="/newbook" component={NewBookContainer} />
+                    <Route path="/book/:id" component={BookPage} />
+                    <Route exact path="/aboutPage" component={AboutPage} />
+                  </Switch>
+                </CSSTransition>
+              </TransitionGroup>
+            )}
+          />
         </div>
       </div>
     );
