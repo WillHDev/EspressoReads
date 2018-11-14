@@ -46,6 +46,7 @@ export class LoginForm extends React.Component {
 
         <label htmlFor={this.randomId}>Username</label>
         <Field
+          className="round"
           component={Input}
           autofocus
           type="text"
@@ -56,6 +57,7 @@ export class LoginForm extends React.Component {
 
         <label htmlFor={this.randomId}>Password</label>
         <Field
+          className="round"
           component={Input}
           type="password"
           name={this.passwordId}
@@ -64,7 +66,10 @@ export class LoginForm extends React.Component {
         />
 
         <div className="align-right">
-          <button disabled={this.props.pristine || this.props.submitting}>
+          <button
+            className="round"
+            disabled={this.props.pristine || this.props.submitting}
+          >
             Log in
           </button>
           <br />
@@ -74,9 +79,6 @@ export class LoginForm extends React.Component {
     );
   }
 }
-//onSubmitFail: (errors, dispatch) => {
-//   dispatch(focus('login', Object.keys(errors)[0]))
-// }
 
 LoginForm = reduxForm({
   form: "login"

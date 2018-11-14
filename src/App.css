@@ -92,3 +92,11 @@ container {
 /* .logo-get-started {
   float: none;
 } */
+
+.cursor {
+  cursor: pointer;
+}
+
+.round {
+  border-radius: 10px;
+}

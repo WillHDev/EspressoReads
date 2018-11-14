@@ -26,9 +26,9 @@ export class HeaderBar extends Component {
 
     if (this.props.location.pathname === "/dashboard") {
       searchBar = (
-        <a className="almanac almanac-left">
+        <a className="almanac almanac-left cursor">
           <input
-            className="search-bar-main"
+            className="search-bar-main round cursor"
             type="text"
             id="search"
             placeholder="Search"
@@ -42,7 +42,7 @@ export class HeaderBar extends Component {
     if (this.props.location.pathname !== "/dashboard") {
       backButton = (
         <a
-          className="almanac almanac-new"
+          className="almanac cursor almanac-new"
           onClick={() => this.backToBooklist()}
         >
           Back
@@ -56,7 +56,10 @@ export class HeaderBar extends Component {
             <div className="top-bar">
               <div className="second-bar">
                 <nav className="main-nav">
-                  <a className="almanac almanac-new" onClick={this.openForm}>
+                  <a
+                    className="almanac almanac-new cursor"
+                    onClick={this.openForm}
+                  >
                     New
                   </a>
                   {backButton}

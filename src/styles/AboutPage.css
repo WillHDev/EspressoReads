@@ -6,11 +6,13 @@
   margin: 5px; /* need some space ?*/
 }
 .about-image {
-  width: 75%;
+  width: 85%;
+  max-width: 600px;
+  float: right;
+  margin: 15px;
 }
 
 .image-two {
-  margin: 0;
   padding: 0;
 }
 

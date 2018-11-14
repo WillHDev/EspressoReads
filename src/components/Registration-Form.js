@@ -60,6 +60,7 @@ export class RegistrationForm extends React.Component {
       >
         <label htmlFor={this.emailAddressId}>Email</label>
         <Field
+          className="round"
           component={Input}
           autofocus
           type="email"
@@ -69,6 +70,7 @@ export class RegistrationForm extends React.Component {
 
         <label htmlFor={this.usernameId}>Username</label>
         <Field
+          className="round"
           component={Input}
           autofocus
           type="text"
@@ -77,6 +79,7 @@ export class RegistrationForm extends React.Component {
         />
         <label htmlFor={this.passwordId}>Password</label>
         <Field
+          className="round"
           component={Input}
           type="password"
           name={this.passwordId}
@@ -85,6 +88,7 @@ export class RegistrationForm extends React.Component {
 
         <label htmlFor="passwordConfirm">Confirm password</label>
         <Field
+          className="round"
           component={Input}
           type="password"
           name="passwordConfirm"
@@ -93,6 +97,7 @@ export class RegistrationForm extends React.Component {
 
         <div className="align-right">
           <button
+            className="round"
             type="submit"
             disabled={this.props.pristine || this.props.submitting}
           >

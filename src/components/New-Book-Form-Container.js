@@ -38,22 +38,6 @@ export class NewBookFormContainer extends Component {
     });
   };
 
-  // submitNewEntry = () => {
-  //   const newEntry = {
-  //     userId: this.props.currentUser.id,
-  //     title: this.props.newBook.title,
-  //     subtitle: this.props.newBook.subtitle,
-  //     description: this.props.newBook.description,
-  //     authors: this.props.newBook.authors,
-  //     id: this.props.newBook.id,
-  //     Url: this.props.newBook.Url,
-  //     image: this.props.newBook.image
-  //   };
-
-    // const nuggetsObject = {};
-    // nuggetsObject.nuggets = this.state.nuggets;
-    // this.props.dispatch(postNewBook(newEntry, nuggetsObject));
-  // };
   updateFromPageState(event) {
     const nuggetId = event.target.id;
     const inputValue = event.target.value;
@@ -66,10 +50,9 @@ export class NewBookFormContainer extends Component {
     });
   }
   updateToPageState(event) {
-    const nuggetId = event.target.id;
     const inputValue = event.target.value;
     const index = event.target.name;
-    let updateNugget = {};
+
     const nuggets = [...this.state.nuggets];
     nuggets[index].toPage = inputValue;
     this.setState({
@@ -78,10 +61,9 @@ export class NewBookFormContainer extends Component {
   }
 
   updateDescriptionState(event) {
-    const nuggetId = event.target.id;
     const inputValue = event.target.value;
     const index = event.target.name;
-    let updateNugget = {};
+
     const nuggets = [...this.state.nuggets];
     nuggets[index].description = inputValue;
     this.setState({
@@ -136,12 +118,16 @@ export class NewBookFormContainer extends Component {
     } else {
       actionButtons = (
         <div className="action-buttons">
-          <a type="button" onClick={this.addNugget}>
+          <a type="button cursor" onClick={this.addNugget}>
             Add Nugget
           </a>
           <br />
           <br />
-          <input className="nugget-submit" type="submit" value="Submit" />
+          <input
+            className="nugget-submit cursor round"
+            type="submit"
+            value="Submit"
+          />
         </div>
       );
     }
@@ -164,7 +150,7 @@ export class NewBookFormContainer extends Component {
               id={nuggetId}
               title="from"
               name={i}
-              className="fromPage"
+              className="fromPage round"
             />
             <span>to</span>
             <input
@@ -173,7 +159,7 @@ export class NewBookFormContainer extends Component {
               type="number"
               id={nuggetId}
               name={i}
-              className="toPage"
+              className="toPage round"
             />
             <ToggleInput
               text={["Add Description"]}
@@ -182,7 +168,7 @@ export class NewBookFormContainer extends Component {
               value={nuggets[i].description}
               name={i}
               id={nuggetId}
-              className="description"
+              className="description round"
             />
           </div>
         );

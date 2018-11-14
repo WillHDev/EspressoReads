@@ -65,7 +65,7 @@ class App extends Component {
 
     if (this.props.location.pathname === "/aboutPage") {
       backButton = (
-        <a className="logout-button" onClick={this.backToDashboard}>
+        <a className="logout-button cursor" onClick={this.backToDashboard}>
           Back
         </a>
       );
@@ -74,7 +74,7 @@ class App extends Component {
     logoBox = <img src={coffeewhite} className="logo-get-started" alt="logo" />;
     if (this.props.location.pathname !== "/" && this.props.loggedIn) {
       logoutButton = (
-        <a className="logout-button" onClick={this.logOut}>
+        <a className="logout-button cursor" onClick={this.logOut}>
           Logout
         </a>
       );
@@ -89,7 +89,10 @@ class App extends Component {
         <header className="header-about-logout">
           {logoutButton}
           <br />
-          <a className="logout-button about-next" onClick={this.aboutPage}>
+          <a
+            className="logout-button about-next cursor"
+            onClick={this.aboutPage}
+          >
             About
           </a>
           <br />

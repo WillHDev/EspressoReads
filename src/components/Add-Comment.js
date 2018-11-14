@@ -60,10 +60,11 @@ export class AddComment extends React.Component {
               value={this.state.comment}
               onChange={this.updateCommentState}
               type="text"
+              className="round"
             />
           </label>
 
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="round" />
         </form>
       </div>
     );

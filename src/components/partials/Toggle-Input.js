@@ -34,7 +34,7 @@ export default class ToggleInput extends React.Component {
             htmlFor={this.props.text}
             type="button"
             onClick={this.switchButtons}
-            className="search-button"
+            className="search-button round"
           >
             {text[0]}
           </button>
@@ -44,7 +44,7 @@ export default class ToggleInput extends React.Component {
       return (
         <div className="toggle-input">
           <button
-            className="search-button"
+            className="search-button round"
             htmlFor={this.props.text}
             type="button"
             onClick={this.firePropsMethod}
@@ -58,15 +58,18 @@ export default class ToggleInput extends React.Component {
             id={this.props.id}
             name={this.props.name}
             value={this.props.value}
+            className="round"
           />
-          <button onClick={this.cancel}>X</button>
+          <button className="round" onClick={this.cancel}>
+            X
+          </button>
         </div>
       );
     } else {
       return (
         <div className="toggle-input">
           <input
-            //value={this.state.value}
+            className="round"
             onChange={this.props.onChange}
             type="text"
             id={this.props.id}

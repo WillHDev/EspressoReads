@@ -101,16 +101,6 @@ export default class NewBookSearch extends Component {
     this.expandDescription[id] = false;
   }
 
-  //   updateNote(event) {
-  //     console.log("hit updateNote", event.target.value);
-  //     //this.setState({ Notes: event.target.value });
-  //   }
-  //   <ToggleInput
-  //   text={["Add a Note", "Add"]}
-  //   method={this.submitNote}
-  //   onChange={e => this.updateNote(e)}
-  // />
-
   render() {
     let showBooks, showSearchInput, showToggleButton, authorInfo;
 
@@ -193,9 +183,13 @@ export default class NewBookSearch extends Component {
       showToggleButton = "";
       showSearchInput = (
         <form onSubmit={e => this.searchBooks(e)}>
-          <input id="search" ref={input => (this.textInput = input)} />
+          <input
+            id="search"
+            ref={input => (this.textInput = input)}
+            className="round"
+          />
 
-          <button id="button" type="button" onClick={this.showSearchInput}>
+          <button id="button" type="submit" className="cursor round">
             Search
           </button>
           <div id=" book-search-grid">{showBooks}</div>
