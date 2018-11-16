@@ -53,6 +53,7 @@ export const addCommentToBook = (createdComment, bookId) => dispatch => {
     })
     .then(book => {
       dispatch(loadBookIntoSingleView(book.id));
+
       dispatch(fetchSharedBooks());
     })
     .catch(err => {

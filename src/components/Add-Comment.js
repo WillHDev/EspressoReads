@@ -46,12 +46,16 @@ export class AddComment extends React.Component {
 
     const { comment } = this.state;
 
-    // string only contained whitespace (ie. spaces, tabs or line breaks)
+    // checks if string only contained whitespace (ie. spaces, tabs or line breaks)
     const isEnabled = comment.length > 0 && /\S/.test(comment);
-
+    console.log(
+      "this.props.viewBook.book.comments",
+      this.props.viewBook.book.comments
+    );
     return (
       <div className="add-comment-container">
         <Comment comments={this.props.viewBook.book.comments} />
+
         <form onSubmit={this.handleSubmit}>
           <label>
             <input

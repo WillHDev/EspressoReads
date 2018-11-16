@@ -70,6 +70,7 @@ export class Book extends React.Component {
       );
     }
     //   {voteButtons}
+    console.log("this.props.book", this.props.book);
     return (
       <div key={id} className="">
         <br />
@@ -96,6 +97,7 @@ export class Book extends React.Component {
               {on && (
                 <div>
                   <AddComment book={this.props.book} />
+
                   <span>
                     <MdClose onClick={toggle} />
                   </span>
