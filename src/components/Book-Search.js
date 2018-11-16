@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { updateNewBookState, newBookErrorMessage } from "../actions/New-Book";
+import { updateNewBookState } from "../actions/New-Book";
 import $ from "jquery";
-import ToggleButton from "./partials/Toggle-Button";
-import ToggleInput from "./partials/Toggle-Input";
+
 import Toggle from "./partials/Toggle";
 import Modal from "./elements/Modal";
 import "../styles/BookForm.css";
@@ -105,7 +104,6 @@ export default class NewBookSearch extends Component {
     let showBooks, showSearchInput, showToggleButton, authorInfo;
 
     if (this.state.booksToDisplay) {
-      console.log("this.state.booksToDisplay", this.state.booksToDisplay);
       showBooks = this.state.booksToDisplay.map(item => {
         const { id } = item;
 
@@ -117,13 +115,11 @@ export default class NewBookSearch extends Component {
           thumbnail = item.volumeInfo.imageLinks.thumbnail;
         }
         if (authors) {
-          console.log("authors", authors);
           authorInfo = <div className="book-search-author">by {authors}</div>;
         }
         let abbrevTitle;
         abbrevTitle = title;
         if (title.length > 60) {
-          console.log("title", title);
           abbrevTitle = (
             <div>
               {" "}
@@ -131,7 +127,6 @@ export default class NewBookSearch extends Component {
               <span className="small-dots">...</span>{" "}
             </div>
           );
-          console.log(" abbrevTitle ", abbrevTitle);
         }
         return (
           <div
@@ -143,7 +138,7 @@ export default class NewBookSearch extends Component {
           >
             <div className="book-search-title">{abbrevTitle}</div>
             {authorInfo}
-            <a>
+            <div>
               {" "}
               <div
                 className="book-image"
@@ -154,7 +149,7 @@ export default class NewBookSearch extends Component {
                   backgroundSize: "cover"
                 }}
               />
-            </a>
+            </div>
 
             <Toggle>
               {({ on, toggle }) => (
@@ -172,7 +167,7 @@ export default class NewBookSearch extends Component {
       showToggleButton = (
         <button
           id="button"
-          className=" search-button"
+          className="round search-button"
           type="button"
           onClick={this.showSearchInput}
         >

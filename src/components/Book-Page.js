@@ -1,13 +1,9 @@
 import React from "react";
 import HeaderBar from "./Header-Bar";
-import ToggleInfo from "./partials/Toggle-Info";
+
 import { connect } from "react-redux";
 import Book from "./Book";
-import {
-  removeBookFromSingleView,
-  loadBookIntoSingleView
-} from "../actions/View-Book";
-import { API_BASE_URL } from "../config";
+import { loadBookIntoSingleView } from "../actions/View-Book";
 
 export class BookPage extends React.Component {
   constructor() {

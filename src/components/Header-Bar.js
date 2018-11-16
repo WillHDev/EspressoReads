@@ -2,14 +2,28 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { changeCurrentUser } from "../actions/Protected-Data";
+
 import { FaSearch } from "react-icons/fa";
 import "../styles/HeaderBar.css";
+import { fetchSharedBooks } from "../actions/Shared-Books";
+import {
+  changeCurrentUser,
+  fetchProtectedData
+} from "../actions/Protected-Data";
 
 export class HeaderBar extends Component {
   state = {
     searchTerm: ""
   };
+
+  componentWillMount() {
+    if (localStorage.getItem("authToken")) {
+      this.props.dispatch(fetchSharedBooks());
+      this.props.dispatch(fetchProtectedData());
+    } else {
+      return;
+    }
+  }
   openForm = () => {
     this.props.history.push("/newbook");
   };

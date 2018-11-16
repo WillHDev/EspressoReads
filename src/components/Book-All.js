@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 import "../styles/Book.css";
 import { withRouter } from "react-router-dom";
 import AddComment from "./Add-Comment";
-import { Nuggets } from "./Nuggets";
 
 export class BookAll extends React.Component {
   upVote = event => {
@@ -25,16 +24,14 @@ export class BookAll extends React.Component {
   };
 
   render() {
-    const { book } = this.props;
     const {
       title,
       author,
-      subtitle,
+
       id,
       image,
       votes,
-      description,
-      nuggets
+      description
     } = this.props.book;
 
     let toggleInfo;
@@ -43,11 +40,10 @@ export class BookAll extends React.Component {
       toggleInfo = <ToggleInfo info={description} />;
     }
     let voteButtons;
-    //   <span className="float-right">UpVotes:</span>
+    //    {votes}
     if (this.props.singleView) {
       voteButtons = (
         <div className="votes">
-          {votes}
           <div
             onClick={e => this.upVote(e)}
             ref="btn"
@@ -88,13 +84,16 @@ export class BookAll extends React.Component {
           {({ on, toggle }) => (
             <div>
               {!on && (
-                <a className="description-toggle-book-all" onClick={toggle}>
+                <a
+                  className="description-toggle-book-all cursor"
+                  onClick={toggle}
+                >
                   Comments
                 </a>
               )}
               {on && (
                 <div>
-                  <FaArrowCircleUp onClick={toggle} />
+                  <FaArrowCircleUp className="cursor" onClick={toggle} />
 
                   <AddComment book={this.props.book} />
                 </div>

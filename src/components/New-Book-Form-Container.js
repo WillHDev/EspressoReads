@@ -27,6 +27,7 @@ export class NewBookFormContainer extends Component {
 
   handleChange = e => {
     const nuggetUpdate = e.target.value;
+
     const key = e.target.className;
     const index = e.target.name;
 
@@ -150,7 +151,7 @@ export class NewBookFormContainer extends Component {
               id={nuggetId}
               title="from"
               name={i}
-              className="fromPage round"
+              className="fromPage"
             />
             <span>to</span>
             <input
@@ -159,7 +160,7 @@ export class NewBookFormContainer extends Component {
               type="number"
               id={nuggetId}
               name={i}
-              className="toPage round"
+              className="toPage"
             />
             <ToggleInput
               text={["Add Description"]}

@@ -5,7 +5,7 @@ export class Nuggets extends React.Component {
   render() {
     const nuggetsDisplay = this.props.nuggets.map(nugget => {
       return (
-        <div className="nugget-card">
+        <div key={nugget.id} className="nugget-card">
           <div className="nugget-description">{nugget.description}</div>
           <div className="nugget-pages">
             <div>

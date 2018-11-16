@@ -25,12 +25,12 @@ export class RegistrationForm extends React.Component {
   onSubmit(values) {
     values.preventDefault();
     const username = values.target[this.usernameId].value;
-    console.log("username", username);
+
     const password = values.target[this.passwordId].value;
     const email = values.target[this.emailAddressId].value;
-    console.log("email", email);
+
     const email2 = values.target[0].value;
-    console.log("email2", email2);
+
     if (!username) {
       return this.props.dispatch(authError("Username is required."));
     } else if (!password) {
@@ -49,9 +49,6 @@ export class RegistrationForm extends React.Component {
   }
 
   render() {
-    //<p className='form-error'>{this.props.errorMessage}</p>
-    console.log("error message reg", this.props.errorMessage);
-    console.log("username etc", this.emailAddressId, this.username);
     return (
       <form
         id={this.randomId}

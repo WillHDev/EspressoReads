@@ -1,9 +1,10 @@
 import React from "react";
-import { FaDivide } from "react-icons/fa";
+
 import Comment from "./Comment";
 import { addComment } from "../actions/Comment";
 import { connect } from "react-redux";
 import "../styles/Comment.css";
+import { withRouter, Switch, Route, Redirect } from "react-router-dom";
 
 export class AddComment extends React.Component {
   constructor(props) {
@@ -39,17 +40,15 @@ export class AddComment extends React.Component {
   };
 
   render() {
-    const userId = this.props.currentUser.id;
+    if (this.props.currentUser) {
+      const userId = this.props.currentUser.id;
+    } else this.props.history.push("/");
 
-    // let commentsDisplay;
-    // <ul>{commentsDisplay} </ul>
-    // if (this.props.book.comments) {
-    //   commentsDisplay = this.props.book.comments.map(comment => {
-    //     return <Comment key={comment.id} comment={comment} />;
-    //   });
-    // }
-    //   <label>
-    console.log("rednered add comment");
+    const { comment } = this.state;
+
+    // string only contained whitespace (ie. spaces, tabs or line breaks)
+    const isEnabled = comment.length > 0 && /\S/.test(comment);
+
     return (
       <div className="add-comment-container">
         <Comment comments={this.props.viewBook.book.comments} />
@@ -64,7 +63,12 @@ export class AddComment extends React.Component {
             />
           </label>
 
-          <input type="submit" value="Submit" className="round" />
+          <input
+            disabled={!isEnabled}
+            type="submit"
+            value="Submit"
+            className="round"
+          />
         </form>
       </div>
     );
@@ -75,4 +79,4 @@ const mapStateToProps = state => ({
   viewBook: state.viewBook
 });
 
-export default connect(mapStateToProps)(AddComment);
+export default withRouter(connect(mapStateToProps)(AddComment));

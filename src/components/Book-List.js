@@ -27,7 +27,7 @@ export class BookList extends React.Component {
       );
     } else {
       //order by vote count
-      //console.log("this.props.sharedBooks", this.props.sharedBooks);
+
       const orderedBooks = this.props.sharedBooks.sort(function(a, b) {
         return a.votes - b.votes;
       });

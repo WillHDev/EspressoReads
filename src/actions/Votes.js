@@ -24,7 +24,6 @@ export const changeVote = (bookId, voteAction) => dispatch => {
       dispatch(fetchSharedBooks());
     })
     .catch(err => {
-      console.log("Error!", err);
       return dispatch(changeVoteError(err));
     });
 };

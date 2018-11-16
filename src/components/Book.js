@@ -2,7 +2,7 @@ import React from "react";
 import ToggleInfo from "./partials/Toggle-Info";
 import Toggle from "./partials/Toggle";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
-import { FaArrowCircleUp } from "react-icons/fa";
+
 import { MdClose } from "react-icons/md";
 import { changeVote } from "../actions/Votes";
 import { connect } from "react-redux";
@@ -30,7 +30,7 @@ export class Book extends React.Component {
     const {
       title,
       author,
-      subtitle,
+
       id,
       image,
       votes,
@@ -46,11 +46,10 @@ export class Book extends React.Component {
       toggleInfo = <ToggleInfo info={description} />;
     }
     let voteButtons;
-    //   <span className="float-right">UpVotes:</span>
+    //  {votes}
     if (this.props.singleView) {
       voteButtons = (
         <div className="votes">
-          {votes}
           <div
             onClick={e => this.upVote(e)}
             ref="btn"
@@ -70,8 +69,9 @@ export class Book extends React.Component {
         </div>
       );
     }
+    //   {voteButtons}
     return (
-      <div className="">
+      <div key={id} className="">
         <br />
         <br />
         <div className="info">
@@ -88,7 +88,7 @@ export class Book extends React.Component {
           onClick={this.props.onClick}
         />
         <ul>{nuggetsDisplay}</ul>
-        {voteButtons}
+
         <Toggle>
           {({ on, toggle }) => (
             <div>

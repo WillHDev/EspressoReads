@@ -26,19 +26,6 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
-    this.setState({
-      goToLogin: false
-    });
-
-    if (localStorage.getItem("authToken")) {
-      this.props.dispatch(fetchSharedBooks());
-      this.props.dispatch(fetchProtectedData());
-    } else {
-      return;
-    }
-  }
-
   goToLogin = () => {
     this.setState({
       goToLogin: true
@@ -50,7 +37,6 @@ class App extends Component {
   };
 
   aboutPage = () => {
-    console.log("Hit");
     this.props.history.push("/aboutPage");
   };
   backToDashboard = () => {

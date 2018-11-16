@@ -97,6 +97,8 @@ container {
   cursor: pointer;
 }
 
-.round {
+.round,
+fromPage,
+toPage {
   border-radius: 10px;
 }

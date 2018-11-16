@@ -4,9 +4,6 @@ import { fetchSharedBooks } from "./Shared-Books";
 import { loadBookIntoSingleView } from "./View-Book";
 
 export const addComment = commentData => dispatch => {
-  console.log("commentData in ACTION", commentData);
-  // console.log("addComment action hit");
-
   const bookId = commentData.book.id;
 
   const authToken = localStorage.getItem("authToken");
@@ -26,7 +23,6 @@ export const addComment = commentData => dispatch => {
     })
     .then(res => res.json())
     .then(createdComment => {
-      console.log("createdComment", createdComment);
       return dispatch(addCommentToBook(createdComment, bookId));
     })
 
@@ -36,7 +32,6 @@ export const addComment = commentData => dispatch => {
 };
 
 export const addCommentToBook = (createdComment, bookId) => dispatch => {
-  console.log("createdComment, bookId", createdComment, bookId);
   const authToken = localStorage.getItem("authToken");
   dispatch(addCommentToBookRequest(true));
   return fetch(`${API_BASE_URL}/api/books/${bookId}`, {
@@ -53,15 +48,10 @@ export const addCommentToBook = (createdComment, bookId) => dispatch => {
     })
     .then(res => res.json())
     .then(book => {
-      console.log("book from comment action", book);
-
-      //updatedBookData
-
       dispatch(addCommentToBookSuccess());
       return book;
     })
     .then(book => {
-      //dispatch(updateSingleView())
       dispatch(loadBookIntoSingleView(book.id));
       dispatch(fetchSharedBooks());
     })

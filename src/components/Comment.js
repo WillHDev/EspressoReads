@@ -1,13 +1,14 @@
 import React from "react";
-import { FaDivide } from "react-icons/fa";
+
 import { connect } from "react-redux";
-import { addComment } from "../actions/Comment";
+
 export class Comment extends React.Component {
   render() {
     const { comments } = this.props;
 
     let commentsDisplay;
-    if (comments !== null) {
+    if (comments) {
+      console.log("comments", comments);
       commentsDisplay = comments.map(comment => {
         return (
           <div className="comment-box book-card2" key={comment.id}>

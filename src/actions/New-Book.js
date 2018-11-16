@@ -40,14 +40,12 @@ export const postNewBookSuccess = () => ({
 });
 
 export const postNewBook = (bookData, nuggets) => dispatch => {
-  console.log("nuggets from post new book", nuggets);
-  // console.log("dispatch", dispatch);
   dispatch(postNewNuggets(nuggets))
     .then(nuggetIds => {
       dispatch(postNewBookRequest());
-      //  console.log("Big time", bookData, nuggetIds);
+
       const token = localStorage.getItem("authToken");
-      //  console.log("token token token", token);
+
       const bodyObj = {};
       bodyObj.nuggetIds = nuggetIds;
       bodyObj.bookData = bookData;
@@ -60,13 +58,10 @@ export const postNewBook = (bookData, nuggets) => dispatch => {
         body: JSON.stringify(bodyObj)
       });
     })
-    //postNewNuggets(nuggets);
 
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(book => {
-      //return dispatch(updateNewBookState({ id: res.id }));
-      //return dispatch(loadBookIntoSingleView(book.id));
       history.push(`/book/${book.id}`);
     })
     .then(() => {
@@ -96,18 +91,16 @@ export const deleteBookSuccess = () => ({
 export const deleteBook = bookId => dispatch => {
   dispatch(deleteBookRequest());
   const token = localStorage.getItem("authToken");
-  return (
-    fetch(`${API_BASE_URL}/api/books/${bookId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(res => normalizeResponseErrors(res))
-      .then(() => dispatch(fetchUserBooks()))
-      // .then(res => res.json())
-      .then(() => dispatch(deleteBookSuccess()))
-      .catch(err => Promise.reject(err))
-  );
+  return fetch(`${API_BASE_URL}/api/books/${bookId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(() => dispatch(fetchUserBooks()))
+
+    .then(() => dispatch(deleteBookSuccess()))
+    .catch(err => Promise.reject(err));
 };

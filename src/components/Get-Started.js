@@ -57,21 +57,21 @@ class GetStarted extends Component {
           <p className="Insight about">Strong Reads Brewed Daily</p>
           <br />
           <br />
-          <p className="App-link" onClick={() => this.goToLogin()}>
+          <p className="App-link cursor" onClick={() => this.goToLogin()}>
             Login
           </p>
           <br />
           <div className="accounts">
             {" "}
             <a
-              className="demo-login-link account"
+              className="demo-login-link account cursor"
               onClick={() => this.goToRegistration()}
             >
               Create an Account
             </a>
             <br />
             <a
-              className="demo-login-link account"
+              className="demo-login-link account cursor"
               onClick={() => this.demoLogin()}
             >
               Use Demo Account
